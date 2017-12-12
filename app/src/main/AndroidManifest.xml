@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.cornez.todotodayii">
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -19,7 +21,7 @@
         </activity>
         <activity android:name=".ContactListActivity" />
         <activity android:name=".ListViewActivity" />
-        <activity android:name=".AddDetailsActivity" />
+        <activity android:name=".AddPetActivity" />
         <activity android:name=".ListActivity"></activity>
     </application>
 

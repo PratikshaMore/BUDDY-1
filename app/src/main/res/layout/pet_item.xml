@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent">-->
+
+
+    <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_alignParentStart="true"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_marginStart="173dp"-->
+        <!--android:layout_marginTop="258dp"-->
+        <!--android:id="@+id/petListRelativeLayout">-->
+    <!--</RelativeLayout>-->
+
+<!--</RelativeLayout>-->
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+>
+    <TextView
+        android:id="@+id/petListName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name" />
+    <TextView
+        android:id="@+id/petListBreed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Breed" />
+    <TextView
+        android:id="@+id/petListOwner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Owner" />
+</LinearLayout>
