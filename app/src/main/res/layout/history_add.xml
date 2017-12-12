@@ -1,0 +1,127 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".AddHistoryActivity">
+
+
+    <RelativeLayout
+        android:id="@+id/relativeLayoutPetForm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView3"
+        android:layout_marginTop="14dp"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp">
+
+        <TextView
+            android:id="@+id/lblPetName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="29dp"
+            android:text="Name goes here" />
+
+        <TextView
+            android:id="@+id/lblPetId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignBaseline="@+id/lblPetName"
+            android:layout_alignBottom="@+id/lblPetName"
+            android:layout_alignParentEnd="true"
+            android:text="id goes here" />
+
+        <TextView
+            android:id="@+id/lblPetBreed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lblPetName"
+            android:layout_marginTop="20dp"
+            android:text="Breed goes here" />
+
+
+        <TextView
+            android:id="@+id/lblWeight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/lblPetBreed"
+            android:layout_marginEnd="14dp"
+            android:layout_alignBaseline="@+id/editHistWeight"
+            android:text="WEIGHT" />
+
+        <EditText
+            android:id="@+id/editHistWeight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/lblPetId"
+            android:layout_below="@+id/lblPetBreed"
+            android:ems="10"
+            android:hint="Pet's weight"
+            android:inputType="numberDecimal"/>
+
+
+        <TextView
+            android:id="@+id/lblPetAge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="14dp"
+            android:layout_alignBaseline="@+id/editHistAge"
+            android:text="Age" />
+
+        <EditText
+            android:id="@+id/editHistAge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/lblPetId"
+            android:layout_below="@+id/editHistWeight"
+            android:ems="10"
+            android:hint="Age goes here"
+            android:inputType="numberDecimal" />
+
+        <TextView
+            android:id="@+id/lblHistDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="14dp"
+            android:layout_alignBaseline="@+id/editHistDescription"
+            android:text="Description" />
+
+        <EditText
+            android:id="@+id/editHistDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/editHistAge"
+            android:ems="10"
+            android:hint="Description"
+            android:inputType="text"
+            android:singleLine="false" />
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btnAddHistory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/relativeLayoutPetForm"
+        android:layout_marginTop="23dp"
+        android:onClick="btnSaveNewHistClick"
+        android:text="Add Visit Info" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="ENTER Vist Information"
+        android:textColor="#1111e9" />
+
+</RelativeLayout>
+
