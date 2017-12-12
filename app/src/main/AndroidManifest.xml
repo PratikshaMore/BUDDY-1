@@ -19,10 +19,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ContactListActivity" />
-        <activity android:name=".ListViewActivity" />
+        <activity android:name=".AddHistoryActivity" />
         <activity android:name=".AddPetActivity" />
-        <activity android:name=".ListActivity"></activity>
+        <activity android:name=".PetListActivity" />
+        <activity android:name=".HistoryListActivity"/>
     </application>
 
 </manifest>

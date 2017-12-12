@@ -50,7 +50,7 @@ public class MainActivity extends Activity {
 //      if((login_name.matches("Keerthana") && login_password.matches("abcd"))|| (login_name.matches("Pratiksha")&& login_password.matches("1234")))
         if(true)
         {
-            Intent intent1 = new Intent(MainActivity.this,ListActivity.class);
+            Intent intent1 = new Intent(getBaseContext(), PetListActivity.class);
             startActivity(intent1);
         }
         else

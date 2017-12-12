@@ -1,6 +1,9 @@
 package com.cornez.todotodayii;
 
-class Pet{
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+class Pet implements Serializable {
 
     //MEMBER ATTRIBUTES
     private int id;

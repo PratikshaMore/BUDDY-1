@@ -12,6 +12,8 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import static java.lang.Math.toIntExact;
+
 
 public class DBHelper extends SQLiteOpenHelper {
     //********** DEFINE THE DATABASE AND TABLE
@@ -58,7 +60,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 + KEY_HIST_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + KEY_HIST_PET_ID + " INTEGER, "
                 + KEY_HIST_AGE + " INTEGER, "
-                + KEY_HIST_WEIGHT + " INTEGER, "
+                + KEY_HIST_WEIGHT + " REAL, "
                 + KEY_HIST_DESC+ " TEXT)";
 
         db.execSQL(table2);
@@ -85,7 +87,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     //********** DATABASE OPERATIONS:  ADD, EDIT, DELETE
 
-    public void addPet(Pet pet) {
+    public Pet addPet(Pet pet) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
@@ -101,12 +103,15 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
         // INSERT THE ROW IN THE TABLE
-        db.insert(DATABASE_TABLE_PET, null, values);
+        long insertedId = db.insert(DATABASE_TABLE_PET, null, values);
+        int insertedIdInt = toIntExact(insertedId);
+        pet.setId(insertedIdInt);
 
         // CLOSE THE DATABASE CONNECTION
         db.close();
+        return pet;
     }
-    public void updatePet(Pet pet) {
+    public Pet updatePet(Pet pet) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(KEY_PET_NAME, pet.getName()); // pet name
@@ -116,9 +121,10 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(KEY_PET_IMAGE_PATH, pet.getImagePath());
         db.update(DATABASE_TABLE_PET, values, KEY_PET_ID + " = ?", new String[]{String.valueOf(pet.getId())});
         db.close();
+        return pet;
     }
 
-    public void addPetHistory(History history) {
+    public History addPetHistory(History history) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
@@ -130,12 +136,16 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(KEY_HIST_DESC, history.getDescription());
 
         // INSERT THE ROW IN THE TABLE
-        db.insert(DATABASE_TABLE_HISTORY, null, values);
+        long insertedId = db.insert(DATABASE_TABLE_HISTORY, null, values);
+        int insertedIdInt = toIntExact(insertedId);
+        history.setId(insertedIdInt);
 
         // CLOSE THE DATABASE CONNECTION
         db.close();
+
+        return history;
     }
-    public void updatePetHistory(History history) {
+    public History updatePetHistory(History history) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(KEY_HIST_ID, history.getId());
@@ -145,6 +155,8 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(KEY_HIST_DESC, history.getDescription());
         db.update(DATABASE_TABLE_PET, values, KEY_HIST_ID + " = ?", new String[]{String.valueOf(history.getId())});
         db.close();
+
+        return history;
     }
 
 
@@ -177,13 +189,17 @@ public class DBHelper extends SQLiteOpenHelper {
         // RETURN THE LIST OF TASKS FROM THE TABLE
         return petList ;
     }
-    public List<History> getAllPetHistory() {
+    public List<History> getAllPetHistory(int petId) {
 
         //GET ALL THE TASK ITEMS ON THE LIST
         List<History> petHistoryList = new ArrayList<History>();
 
         //SELECT ALL QUERY FROM THE TABLE
-        String selectQuery = "SELECT * FROM " + DATABASE_TABLE_HISTORY;
+        String selectQuery;
+        if(petId == 0)
+            selectQuery = "SELECT * FROM " + DATABASE_TABLE_HISTORY;
+        else
+            selectQuery = "SELECT * FROM " + DATABASE_TABLE_HISTORY + " WHERE " + KEY_HIST_PET_ID + "=" + String.valueOf(petId);
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);

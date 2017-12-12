@@ -9,6 +9,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.telephony.PhoneNumberUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -32,7 +33,7 @@ import java.util.List;
 import android.view.View.OnClickListener;
 
 
-public class AddPetActivity extends Activity {
+public class AddPetActivity extends AppCompatActivity {
 
     protected DBHelper mDBHelper;
     private List<Pet> list;
@@ -61,6 +62,7 @@ public class AddPetActivity extends Activity {
 
         // TASK 1: LAUNCH THE LAYOUT REPRESENTING THE MAIN ACTIVITY
         setContentView(R.layout.pet_add);
+        getSupportActionBar().setTitle("Add a Pet");
 
         // TASK 2: ESTABLISH REFERENCES TO THE UI ELEMENTS LOCATED ON THE LAYOUT
         editPetName = (EditText) findViewById(R.id.editPetName);
@@ -98,7 +100,7 @@ public class AddPetActivity extends Activity {
 
             //BUILD A NEW PET ITEM AND ADD IT TO THE DATABASE
             Pet pet = new Pet(-1, name, breed, age, owner, imagePath, contact);
-            mDBHelper.addPet(pet);
+            Pet insertedPet = mDBHelper.addPet(pet);
 
             // CLEAR OUT THE PET EDIT VIEWS
             editPetName.setText("");
@@ -108,11 +110,10 @@ public class AddPetActivity extends Activity {
             editPetContact.setText("");
             textViewImagePath.setText("");
 
-//            /* ADD THE TASK AND SET A NOTIFICATION OF CHANGES */
-//            adapt.add(pet);
-//            adapt.notifyDataSetChanged();
-//            Intent intent = new Intent(AddPetActivity.this, ListActivity.class);
-//            startActivity(intent);
+            /* PASS THE VALUES TO THE HISTORY ACTIVITY */
+            Intent intent = new Intent(getBaseContext(), AddHistoryActivity.class);
+            intent.putExtra("EXTRA_SERIALIZED_PET", insertedPet);
+            startActivity(intent);
         }
     }
 

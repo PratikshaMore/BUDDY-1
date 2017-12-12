@@ -1,17 +1,20 @@
 package com.cornez.todotodayii;
 
-class History{
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+class History implements Serializable{
 
     private int id;
     private int pid;
     private int age;
-    private int weight;
+    private float weight;
     private String description;
 
     public History() {
     }
 
-    public History(int id, int pid, int age, int weight, String description) {
+    public History(int id, int pid, int age, float weight, String description) {
         this.id = id;
         this.pid = pid;
         this.age = age;
@@ -45,11 +48,11 @@ class History{
     }
 
 
-    public int getWeight() {
+    public float getWeight() {
         return weight;
     }
 
-    public void setWeight(int weight) {
+    public void setWeight(float weight) {
         this.weight = weight;
     }
 
