@@ -22,6 +22,7 @@ public class HistoryListActivity extends AppCompatActivity {
     protected DBHelper mDBHelper;
     private List<History> list;
     private HistoryArrayAdapter adapt;
+    private Pet currentPet;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,11 +31,11 @@ public class HistoryListActivity extends AppCompatActivity {
 
 
         Intent i = getIntent();
-        Pet pet = (Pet) i.getSerializableExtra("EXTRA_SERIALIZED_PET");
-        if(pet.getName().isEmpty()){
+        currentPet = (Pet) i.getSerializableExtra("EXTRA_SERIALIZED_PET");
+        if(currentPet.getName().isEmpty()){
             getSupportActionBar().setTitle("Pet's History");
         } else {
-            getSupportActionBar().setTitle(pet.getName()+"'s History");
+            getSupportActionBar().setTitle(currentPet.getName()+"'s History");
         }
 
     }
@@ -50,17 +51,17 @@ public class HistoryListActivity extends AppCompatActivity {
     }
 
     public void btnAddNewHistClick(View view) {
-        Intent intent1 = new Intent(getBaseContext(),AddPetActivity.class);
-        startActivity(intent1);
-        Log.d("TEST","TEST");
+        Intent intent = new Intent(getBaseContext(),AddHistoryActivity.class);
+        intent.putExtra("EXTRA_SERIALIZED_PET", currentPet);
+        startActivity(intent);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         Intent i = getIntent();
-        Pet pet = (Pet) i.getSerializableExtra("EXTRA_SERIALIZED_PET");
-        list = mDBHelper.getAllPetHistory(pet.getId());
+        currentPet = (Pet) i.getSerializableExtra("EXTRA_SERIALIZED_PET");
+        list = mDBHelper.getAllPetHistory(currentPet.getId());
         adapt = new HistoryArrayAdapter(this, R.layout.history_item, list);
         ListView petListView = (ListView) findViewById(R.id.historyListView);
         petListView.setAdapter(adapt);

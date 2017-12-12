@@ -57,6 +57,7 @@ public class AddHistoryActivity extends AppCompatActivity {
         editHistWeight = (EditText) findViewById(R.id.editHistWeight);
         editHistAge = (EditText) findViewById(R.id.editHistAge);
         editHistDescription = (EditText) findViewById(R.id.editHistDescription);
+
         textPetId = (TextView) findViewById(R.id.lblPetId);
         textPetName = (TextView) findViewById(R.id.lblPetName);
         textPetBreed = (TextView) findViewById(R.id.lblPetBreed);
