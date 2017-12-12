@@ -41,7 +41,7 @@ public class AddPetActivity extends AppCompatActivity {
 
     private EditText editPetName;
     private EditText editPetBreed;
-    private EditText editPetAge;
+//    private EditText editPetAge;
     private EditText editPetOwner;
     private EditText editPetContact;
     private TextView textViewImagePath;
@@ -67,7 +67,7 @@ public class AddPetActivity extends AppCompatActivity {
         // TASK 2: ESTABLISH REFERENCES TO THE UI ELEMENTS LOCATED ON THE LAYOUT
         editPetName = (EditText) findViewById(R.id.editPetName);
         editPetBreed = (EditText) findViewById(R.id.editPetBreed);
-        editPetAge = (EditText) findViewById(R.id.editPetAge);
+//        editPetAge = (EditText) findViewById(R.id.editPetAge);
         editPetOwner = (EditText) findViewById(R.id.editPetOwnerName);
         editPetContact = (EditText) findViewById(R.id.editPetContact);
         textViewImagePath = (TextView) findViewById(R.id.textViewImagePath);
@@ -88,27 +88,27 @@ public class AddPetActivity extends AppCompatActivity {
     public void btnSaveNewPetClick(View view){
         String name = editPetName.getText().toString();
         String breed = editPetBreed.getText().toString();
-        Integer age = Integer.valueOf(editPetAge.getText().toString());
+//        Integer age = Integer.valueOf(editPetAge.getText().toString());
         String owner = editPetOwner.getText().toString();
         String contact = editPetContact.getText().toString();
         String imagePath = textViewImagePath.getText().toString();
 
         // validation for empty fields
-        if (name.isEmpty() || breed.isEmpty() || age <= 0 || owner.isEmpty() || contact.isEmpty()) {
+        if (name.isEmpty() || breed.isEmpty() || owner.isEmpty() || contact.isEmpty()) {
             Toast.makeText(getApplicationContext(), "A field can not be blank", Toast.LENGTH_SHORT).show();
         } else {
 
             //BUILD A NEW PET ITEM AND ADD IT TO THE DATABASE
-            Pet pet = new Pet(-1, name, breed, age, owner, imagePath, contact);
+            Pet pet = new Pet(-1, name, breed, owner, imagePath, contact);
             Pet insertedPet = mDBHelper.addPet(pet);
 
-            // CLEAR OUT THE PET EDIT VIEWS
-            editPetName.setText("");
-            editPetBreed.setText("");
-            editPetAge.setText("");
-            editPetOwner.setText("");
-            editPetContact.setText("");
-            textViewImagePath.setText("");
+//            // CLEAR OUT THE PET EDIT VIEWS
+//            editPetName.setText("");
+//            editPetBreed.setText("");
+//            editPetAge.setText("");
+//            editPetOwner.setText("");
+//            editPetContact.setText("");
+//            textViewImagePath.setText("");
 
             /* PASS THE VALUES TO THE HISTORY ACTIVITY */
             Intent intent = new Intent(getBaseContext(), AddHistoryActivity.class);

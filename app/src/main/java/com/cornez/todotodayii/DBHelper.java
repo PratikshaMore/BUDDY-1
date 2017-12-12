@@ -128,8 +128,8 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
-        //ADD KEY-VALUE PAIR INFORMATION FOR THE TASK DESCRIPTION
-        values.put(KEY_HIST_ID, history.getId());
+        //ADD KEY-VALUE PAIR INFORMATION FOR THE HISTORY DESCRIPTION
+        //  values.put(KEY_HIST_ID, history.getId()); AUTOINCREMENT
         values.put(KEY_HIST_PET_ID, history.getPid());
         values.put(KEY_HIST_AGE, history.getAge());
         values.put(KEY_HIST_WEIGHT, history.getWeight());
