@@ -12,24 +12,28 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="74dp"
         android:paddingBottom="4dp"
-        android:paddingLeft="30dp"
-        android:paddingRight="30dp"
         android:paddingTop="10dp"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="86dp"></ListView>
 
-    <Button
-        android:id="@+id/btnAddNewPet"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="23dp"
-        android:text="Add"
-        android:onClick="btnAddNewPetClick"/>
 
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/btnAddNewPet"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_gravity="right|bottom"
+        android:onClick="btnAddNewPetClick"
+        android:src="@drawable/ic_add"
+        app:fabSize="normal"
+        app:elevation="0dp"
+        app:pressedTranslationZ="0dp"
+        app:rippleColor="@android:color/darker_gray" />
     <!--<Button-->
         <!--android:id="@+id/button2"-->
         <!--android:layout_width="wrap_content"-->
