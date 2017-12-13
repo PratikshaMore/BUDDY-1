@@ -87,35 +87,40 @@ public class AddHistoryActivity extends AppCompatActivity {
     public void btnSaveNewHistClick(View view){
 
 
+        //TODO VALIDATE THE EMPTY STRING OF EDIT TEXTS
+        String petIdString = textPetId.getText().toString();
+        String weightString = editHistWeight.getText().toString();
+        String ageString = editHistAge.getText().toString();
+        String description = editHistDescription.getText().toString();
+
+        if(petIdString.isEmpty() || weightString.isEmpty() || ageString.isEmpty()){
+            Toast.makeText(getApplicationContext(), "A field can not be blank", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         Integer petId = Integer.valueOf(textPetId.getText().toString());
         Float weight = Float.valueOf(editHistWeight.getText().toString());
         Integer age = Integer.valueOf(editHistAge.getText().toString());
-        String description = editHistDescription.getText().toString();
 
         // validation for empty fields
-        if (petId < 0 || weight < 0 || age <= 0 || description.isEmpty()) {
-            Toast.makeText(getApplicationContext(), "A field can not be blank", Toast.LENGTH_SHORT).show();
-        } else {
-
-            //BUILD A NEW PET ITEM AND ADD IT TO THE DATABASE
-            History history = new History(-1, petId, age, weight, description);
-            mDBHelper.addPetHistory(history);
 
 
-            // CLEAR OUT THE PET EDIT VIEWS
-            editHistWeight.setText("");
-            editHistAge.setText("");
-            editHistDescription.setText("");
+        //BUILD A NEW PET ITEM AND ADD IT TO THE DATABASE
+        History history = new History(-1, petId, age, weight, description);
+        mDBHelper.addPetHistory(history);
 
-            Toast.makeText(getApplicationContext(), "Visit information added", Toast.LENGTH_SHORT).show();
 
-//            /* ADD THE TASK AND SET A NOTIFICATION OF CHANGES */
-//            adapt.add(pet);
-//            adapt.notifyDataSetChanged();
-//            Intent intent = new Intent(AddPetActivity.this, ListActivity.class);
-//            startActivity(intent);
-        }
+        // CLEAR OUT THE PET EDIT VIEWS
+        editHistWeight.setText("");
+        editHistAge.setText("");
+        editHistDescription.setText("");
+
+        Toast.makeText(getApplicationContext(), "Visit information added", Toast.LENGTH_SHORT).show();
+
+        /* ADD THE TASK AND SET A NOTIFICATION OF CHANGES */
+        Intent intent = new Intent(getBaseContext(), HistoryListActivity.class);
+        startActivity(intent);
+
     }
 
 

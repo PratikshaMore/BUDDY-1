@@ -75,7 +75,16 @@
         android:layout_below="@+id/textWelcomeMessage"
         android:layout_toStartOf="@+id/imageViewLogo"
         android:onClick="onClickResetDB"
-        android:text="RESET DB" />
+        android:text="Clear DB" />
+
+    <Button
+        android:id="@+id/seedDB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imageViewLogo"
+        android:layout_toEndOf="@+id/editUsername"
+        android:onClick="onClickSeedDatabase"
+        android:text="SEED DB" />
 
 
 </RelativeLayout>

@@ -74,6 +74,21 @@ public class DBHelper extends SQLiteOpenHelper {
         Log.d("RESET_TAG", "Called reset DB");
     }
 
+    public void seedDatabase() {
+        int seedCount = 10;
+        SQLiteDatabase db = this.getWritableDatabase();
+        for(int i =0 ;i < seedCount; i++){
+            ContentValues values = new ContentValues();
+            values.put(KEY_PET_NAME, "PetName"+i);
+            values.put(KEY_PET_BREED, "PetBreed"+i);
+            values.put(KEY_PET_OWNER_NAME, "PetOwnerName"+i);
+            values.put(KEY_PET_CONTACT,"PetContact"+i);
+            values.put(KEY_PET_IMAGE_PATH, "PetImagePath"+i);
+            db.insert(DATABASE_TABLE_PET, null, values);
+        }
+        db.close();
+    }
+
     @Override
     public void onUpgrade(SQLiteDatabase database, int oldVersion, int newVersion) {
         // DROP OLDER TABLE IF EXISTS
@@ -145,7 +160,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         return history;
     }
-    
+
     public History updatePetHistory(History history) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();

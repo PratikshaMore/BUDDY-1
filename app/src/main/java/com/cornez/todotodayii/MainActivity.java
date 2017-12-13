@@ -75,5 +75,8 @@ public class MainActivity extends Activity {
     public void onClickResetDB(View view){
         mDBHelper.resetThis();
     }
+    public void onClickSeedDatabase(View view){
+        mDBHelper.seedDatabase();
+    }
 }
 
