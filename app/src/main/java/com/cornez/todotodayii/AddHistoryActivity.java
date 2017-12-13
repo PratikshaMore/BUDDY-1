@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.telephony.PhoneNumberUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -52,6 +53,16 @@ public class AddHistoryActivity extends AppCompatActivity {
         // TASK 1: LAUNCH THE LAYOUT REPRESENTING THE MAIN ACTIVITY
         setContentView(R.layout.history_add);
 
+
+        Intent i = getIntent();
+        Pet pet = (Pet) i.getSerializableExtra("EXTRA_SERIALIZED_PET");
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
+        getSupportActionBar().setTitle(pet.getName()+"'s visit");
+
+
+
+
         // TASK 2: ESTABLISH REFERENCES TO THE UI
         //      ELEMENTS LOCATED ON THE LAYOUT
         editHistWeight = (EditText) findViewById(R.id.editHistWeight);
@@ -64,9 +75,6 @@ public class AddHistoryActivity extends AppCompatActivity {
 
 
 
-        Intent i = getIntent();
-        Pet pet = (Pet) i.getSerializableExtra("EXTRA_SERIALIZED_PET");
-        getSupportActionBar().setTitle(pet.getName()+"'s visit");
 
         textPetId.setText(String.valueOf(pet.getId()));
         textPetName.setText(pet.getName());

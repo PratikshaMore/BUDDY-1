@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.telephony.PhoneNumberUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -58,11 +59,13 @@ public class AddPetActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        verifyStoragePermissions(this);
-
         // TASK 1: LAUNCH THE LAYOUT REPRESENTING THE MAIN ACTIVITY
         setContentView(R.layout.pet_add);
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
         getSupportActionBar().setTitle("Add a Pet");
+
+        verifyStoragePermissions(this);
 
         // TASK 2: ESTABLISH REFERENCES TO THE UI ELEMENTS LOCATED ON THE LAYOUT
         editPetName = (EditText) findViewById(R.id.editPetName);

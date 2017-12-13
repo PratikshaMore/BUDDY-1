@@ -17,23 +17,61 @@
 <!--</RelativeLayout>-->
 
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/listview_item_height"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+
 >
+
+    <ImageView
+        android:id="@+id/list_item_image"
+        android:layout_width="@dimen/listview_item_image"
+        android:layout_height="@dimen/listview_item_image"
+        android:layout_centerVertical="true"
+        android:layout_weight="1"
+        app:srcCompat="@android:drawable/btn_star"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+
+        />
+
+
     <TextView
         android:id="@+id/petListName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_toRightOf="@id/list_item_image"
+        android:textSize="@dimen/listview_item_heading"
         android:text="Name" />
+
     <TextView
         android:id="@+id/petListBreed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/petListName"
+        android:layout_toRightOf="@id/list_item_image"
+        android:textSize="@dimen/listview_item_single_line"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:text="Breed" />
+
     <TextView
         android:id="@+id/petListOwner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/petListName"
+        android:layout_toRightOf="@id/petListBreed"
+        android:textSize="@dimen/listview_item_single_line"
         android:text="Owner" />
-</LinearLayout>
+
+    <CheckBox
+        android:id="@+id/petListCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:visibility="visible" />
+
+</RelativeLayout>

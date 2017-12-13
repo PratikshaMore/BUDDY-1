@@ -145,6 +145,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         return history;
     }
+    
     public History updatePetHistory(History history) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -231,15 +232,19 @@ public class DBHelper extends SQLiteOpenHelper {
 //        db.close();
 //    }
 
-//    public void deleteSelected(List<Pet_Details> list) {
-//
-//        for(Iterator<Pet_Details> i=list.iterator() ; i.hasNext();){
-//            Pet_Details item=i.next();
-//            if(item.getIs_done()==1) i.remove();
-//        }
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        db.delete(DATABASE_TABLE, KEY_IS_DONE+"=1", new String[]{});
-//        db.close();
-//    }
+    public void deleteSelected(List<Pet> list) {
+        if(list.isEmpty())
+            return;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        for(Iterator<Pet> i=list.iterator() ; i.hasNext();){
+            Pet item=i.next();
+            db.delete(DATABASE_TABLE_PET, KEY_PET_ID+"="+item.getId(), new String[]{});
+            i.remove();
+        }
+        db.close();
+        return;
+    }
 
 }

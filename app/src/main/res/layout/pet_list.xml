@@ -6,6 +6,15 @@
     android:layout_height="match_parent"
     tools:context="com.cornez.todotodayii.PetListActivity">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
     <ListView
         android:id="@+id/petListView"
         android:layout_width="match_parent"
@@ -13,7 +22,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:paddingBottom="4dp"
-        android:paddingTop="10dp"
+        android:layout_marginTop="56dp"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="86dp"></ListView>
 
@@ -34,6 +43,23 @@
         app:elevation="0dp"
         app:pressedTranslationZ="0dp"
         app:rippleColor="@android:color/darker_gray" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/btnDeletePet"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_gravity="right|bottom"
+        android:onClick="btnDeletePetClick"
+        android:src="@drawable/ic_trash"
+        app:fabSize="normal"
+        app:elevation="0dp"
+        app:pressedTranslationZ="0dp"
+        app:rippleColor="@android:color/darker_gray"
+        android:visibility="invisible"/>
     <!--<Button-->
         <!--android:id="@+id/button2"-->
         <!--android:layout_width="wrap_content"-->
