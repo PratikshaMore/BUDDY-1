@@ -54,7 +54,7 @@
         android:layout_marginBottom="16dp"
         android:layout_gravity="right|bottom"
         android:onClick="btnDeletePetClick"
-        android:src="@drawable/ic_trash"
+        android:src="@drawable/trash_icon"
         app:fabSize="normal"
         app:elevation="0dp"
         app:pressedTranslationZ="0dp"
