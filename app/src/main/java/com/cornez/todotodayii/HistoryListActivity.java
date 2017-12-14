@@ -25,6 +25,13 @@ public class HistoryListActivity extends AppCompatActivity {
     private List<History> list;
     private HistoryArrayAdapter adapt;
     private Pet currentPet;
+
+    public void onBackPressed()
+    {
+        this.startActivity(new Intent(getBaseContext(),PetListActivity.class));
+        return;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

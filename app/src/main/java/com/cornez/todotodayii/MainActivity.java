@@ -31,6 +31,13 @@ public class MainActivity extends Activity {
     String login_name;
     String login_password;
 
+    public void onBackPressed()
+    {
+        Intent startMain = new Intent(Intent.ACTION_MAIN);
+        startMain.addCategory(Intent.CATEGORY_HOME);
+        startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(startMain);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +54,7 @@ public class MainActivity extends Activity {
         login_name = username.getText().toString();
         login_password = password.getText().toString();
 
+//        TODO UNCOMMENT THIS BEFORE FINALS
 //      if((login_name.matches("Keerthana") && login_password.matches("abcd"))|| (login_name.matches("Pratiksha")&& login_password.matches("1234")))
         if(true)
         {

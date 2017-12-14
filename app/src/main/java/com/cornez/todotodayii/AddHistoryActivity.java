@@ -38,6 +38,7 @@ public class AddHistoryActivity extends AppCompatActivity {
 
     protected DBHelper mDBHelper;
     private List<Pet> list;
+    private Pet currentPet;
 
     private TextView textPetId;
     private TextView textPetName;
@@ -45,6 +46,12 @@ public class AddHistoryActivity extends AppCompatActivity {
     private EditText editHistWeight;
     private EditText editHistAge;
     private EditText editHistDescription;
+
+    public void onBackPressed()
+    {
+        this.startActivity(new Intent(getBaseContext(), HistoryListActivity.class));
+        return;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,10 +62,10 @@ public class AddHistoryActivity extends AppCompatActivity {
 
 
         Intent i = getIntent();
-        Pet pet = (Pet) i.getSerializableExtra("EXTRA_SERIALIZED_PET");
+        currentPet = (Pet) i.getSerializableExtra("EXTRA_SERIALIZED_PET");
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
-        getSupportActionBar().setTitle(pet.getName()+"'s visit");
+        getSupportActionBar().setTitle(currentPet.getName()+"'s visit");
 
 
 
@@ -76,9 +83,9 @@ public class AddHistoryActivity extends AppCompatActivity {
 
 
 
-        textPetId.setText(String.valueOf(pet.getId()));
-        textPetName.setText(pet.getName());
-        textPetBreed.setText(pet.getBreed());
+        textPetId.setText(String.valueOf(currentPet.getId()));
+        textPetName.setText(currentPet.getName());
+        textPetBreed.setText(currentPet.getBreed());
 
         // TASK 3: SET UP THE DATABASE
         mDBHelper = new DBHelper(this);
@@ -111,14 +118,17 @@ public class AddHistoryActivity extends AppCompatActivity {
 
 
         // CLEAR OUT THE PET EDIT VIEWS
-        editHistWeight.setText("");
-        editHistAge.setText("");
-        editHistDescription.setText("");
+//        editHistWeight.setText("");
+//        editHistAge.setText("");
+//        editHistDescription.setText("");
 
-        Toast.makeText(getApplicationContext(), "Visit information added", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(), "Visit information added", Toast.LENGTH_SHORT).show();
 
         /* ADD THE TASK AND SET A NOTIFICATION OF CHANGES */
         Intent intent = new Intent(getBaseContext(), HistoryListActivity.class);
+        intent.putExtra("EXTRA_SERIALIZED_PET", currentPet);
+        startActivity(intent);
+
         startActivity(intent);
 
     }

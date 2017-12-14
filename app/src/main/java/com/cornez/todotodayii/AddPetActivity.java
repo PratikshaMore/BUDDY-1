@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Debug;
 import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -30,6 +31,7 @@ import android.widget.Toast;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import android.view.View.OnClickListener;
 
@@ -54,6 +56,12 @@ public class AddPetActivity extends AppCompatActivity {
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.WRITE_EXTERNAL_STORAGE
     };
+
+    public void onBackPressed()
+    {
+        this.startActivity(new Intent(getBaseContext(),MainActivity.class));
+        return;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,11 +128,14 @@ public class AddPetActivity extends AppCompatActivity {
         }
     }
 
-    private void saveImage(Bitmap finalBitmap, String image_name) {
+    private void saveImage(Bitmap finalBitmap) {
         String root = Environment.getExternalStorageDirectory().getAbsolutePath();
         File myDir = new File(root);
         myDir.mkdirs();
-        String fname = "Image-" + image_name+ ".jpg";
+        String millisStart = String.valueOf(Calendar.getInstance().getTimeInMillis());
+
+
+        String fname = "/Buddy-"+ millisStart+".bmp";
         File file = new File(myDir, fname);
         if (file.exists()) file.delete();
         Log.d("LOAD", root + fname);
@@ -136,7 +147,7 @@ public class AddPetActivity extends AppCompatActivity {
             textViewImagePath.setText(root+fname);
         } catch (Exception e) {
             e.printStackTrace();
-            textViewImagePath.setText("Error saving image");
+            textViewImagePath.setText("NO_FILE");
         }
     }
 
@@ -174,7 +185,7 @@ public class AddPetActivity extends AppCompatActivity {
 //            ((ImageButton) view).setImageResource(R.drawable.icon2);
             ImageButton imageview = (ImageButton) findViewById(R.id.addImageButton); //sets imageview as the bitmap
             imageview.setImageBitmap(image);
-            saveImage(image,"TestImageName");
+            saveImage(image);
         }
     }
 
