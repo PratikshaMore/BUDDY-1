@@ -68,4 +68,12 @@ android:layout_height="@dimen/listview_item_height">
         android:layout_toEndOf="@+id/lblTextWeight"
         android:text="123"
         android:textSize="@dimen/listview_item_single_line" />
+
+    <CheckBox
+        android:id="@+id/histListCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:visibility="visible" />
 </RelativeLayout>

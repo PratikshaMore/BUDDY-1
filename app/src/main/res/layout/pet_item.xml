@@ -23,8 +23,9 @@
     android:layout_height="@dimen/listview_item_height"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
+    android:descendantFocusability="blocksDescendants"
 
->
+    >
 
     <ImageView
         android:id="@+id/list_item_image"
@@ -73,5 +74,17 @@
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
         android:visibility="visible" />
+
+    <ImageButton
+        android:id="@+id/petListEditButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/petListCheckBox"
+        android:adjustViewBounds="false"
+        android:background="@null"
+        android:cropToPadding="false"
+        app:srcCompat="@android:drawable/ic_menu_edit"
+        android:visibility="visible"/>
 
 </RelativeLayout>

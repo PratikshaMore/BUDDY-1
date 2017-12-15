@@ -49,7 +49,9 @@ public class AddHistoryActivity extends AppCompatActivity {
 
     public void onBackPressed()
     {
-        this.startActivity(new Intent(getBaseContext(), HistoryListActivity.class));
+        Intent intent = new Intent(getBaseContext(), HistoryListActivity.class);
+        intent.putExtra("EXTRA_SERIALIZED_PET", currentPet);
+        startActivity(intent);
         return;
     }
 
@@ -66,7 +68,6 @@ public class AddHistoryActivity extends AppCompatActivity {
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
         getSupportActionBar().setTitle(currentPet.getName()+"'s visit");
-
 
 
 

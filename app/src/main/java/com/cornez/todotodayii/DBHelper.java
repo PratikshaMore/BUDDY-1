@@ -84,7 +84,18 @@ public class DBHelper extends SQLiteOpenHelper {
             values.put(KEY_PET_OWNER_NAME, "PetOwnerName"+i);
             values.put(KEY_PET_CONTACT,"PetContact"+i);
             values.put(KEY_PET_IMAGE_PATH, "PetImagePath"+i);
-            db.insert(DATABASE_TABLE_PET, null, values);
+            long insertedId = db.insert(DATABASE_TABLE_PET, null, values);
+            int insertedIdInt = toIntExact(insertedId);
+
+            for(int j = 0; j < seedCount/2 ; j++){
+                ContentValues hist_values = new ContentValues();
+                hist_values.put(KEY_HIST_PET_ID, insertedIdInt);
+                hist_values.put(KEY_HIST_AGE, i+j+1);
+                hist_values.put(KEY_HIST_WEIGHT, (i+j+1) * 3);
+                hist_values.put(KEY_HIST_DESC, "Random String of what is wrong with this pet"+String.valueOf(i)+" "+String.valueOf(j));
+                db.insert(DATABASE_TABLE_HISTORY, null, hist_values);
+            }
+
         }
         db.close();
     }
@@ -126,6 +137,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.close();
         return pet;
     }
+
     public Pet updatePet(Pet pet) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -182,7 +194,7 @@ public class DBHelper extends SQLiteOpenHelper {
         List<Pet> petList = new ArrayList<Pet>();
 
         //SELECT ALL QUERY FROM THE TABLE
-        String selectQuery = "SELECT * FROM " + DATABASE_TABLE_PET;
+        String selectQuery = "SELECT * FROM " + DATABASE_TABLE_PET + " ORDER BY " + KEY_PET_ID + " DESC";
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -261,5 +273,6 @@ public class DBHelper extends SQLiteOpenHelper {
         db.close();
         return;
     }
+
 
 }

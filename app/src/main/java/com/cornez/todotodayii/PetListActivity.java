@@ -22,6 +22,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 //import android.widget.RadioButton;
@@ -35,7 +36,7 @@ import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-
+import static com.cornez.todotodayii.Utils.getBitmap;
 
 
 public class PetListActivity extends AppCompatActivity {
@@ -47,6 +48,8 @@ public class PetListActivity extends AppCompatActivity {
     private FloatingActionButton deletePetButton;
     private List<Pet> petsToDelete;
     private boolean CHOICE_MODE_ENABLED = false;
+    private int ACTIVITY_MODE_ADD = 1;
+    private int ACTIVITY_MODE_EDIT = 2;
 
     public void onBackPressed()
     {
@@ -56,8 +59,6 @@ public class PetListActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pet_list);
@@ -77,8 +78,7 @@ public class PetListActivity extends AppCompatActivity {
 
         petListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position,
-                                    long id) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getBaseContext(), HistoryListActivity.class);
                 intent.putExtra("EXTRA_SERIALIZED_PET", list.get(position));
                 startActivity(intent);
@@ -125,16 +125,6 @@ public class PetListActivity extends AppCompatActivity {
         }
     }
 
-
-//    public void clearTasks(View view) {
-////        mDBHelper.clearAll(list);
-//        adapt.notifyDataSetChanged();
-////        mDBHelper.resetThis();
-//    }
-//    public void deleteDone(View view) {
-////        mDBHelper.deleteSelected(list);
-//        adapt.notifyDataSetChanged();
-//    }
 
     public void btnAddNewPetClick(View view) {
         Intent intent1 = new Intent(PetListActivity.this,AddPetActivity.class);
@@ -202,6 +192,7 @@ public class PetListActivity extends AppCompatActivity {
             TextView petOwner = (TextView) convertView.findViewById(R.id.petListOwner);
             ImageView petImageView = (ImageView) convertView.findViewById(R.id.list_item_image);
             final CheckBox petListCheckBox = (CheckBox) convertView.findViewById(R.id.petListCheckBox);
+            final ImageButton editImageButton = (ImageButton) convertView.findViewById(R.id.petListEditButton);
 
             petListCheckBox.setOnClickListener(new View.OnClickListener(){
                 @Override
@@ -225,6 +216,18 @@ public class PetListActivity extends AppCompatActivity {
                 }
             });
 
+            editImageButton.setOnClickListener(
+                new View.OnClickListener() {
+                    public void onClick(View v) {
+                        Intent intent = new Intent(PetListActivity.this,AddPetActivity.class);
+                        intent.putExtra("EXTRA_SERIALIZED_PET", pet);
+                        intent.putExtra("EXTRA_ACTIVITY_MODE", ACTIVITY_MODE_EDIT);
+                        startActivity(intent);
+                    }
+            });
+
+
+
 
 
             // Populate the data into the template view using the data object
@@ -238,10 +241,15 @@ public class PetListActivity extends AppCompatActivity {
             else {
                 petImageView.setImageResource(R.drawable.camera);
             }
-            if(CHOICE_MODE_ENABLED)
+            if(CHOICE_MODE_ENABLED){
                 petListCheckBox.setVisibility(View.VISIBLE);
-            else
+                editImageButton.setVisibility(View.GONE);
+            }
+            else{
                 petListCheckBox.setVisibility(View.INVISIBLE);
+                editImageButton.setVisibility(View.VISIBLE);
+            }
+
             // Return the completed view to render on screen
             return convertView;
         }
@@ -257,19 +265,7 @@ public class PetListActivity extends AppCompatActivity {
             return true;
         }
 
-        public Bitmap getBitmap(String path) {
-            try {
-                Bitmap bitmap=null;
-                File f= new File(path);
-                BitmapFactory.Options options = new BitmapFactory.Options();
-                options.inPreferredConfig = Bitmap.Config.ARGB_8888;
 
-                bitmap = BitmapFactory.decodeStream(new FileInputStream(f), null, options);
-                return bitmap;
-            } catch (Exception e) {
-                e.printStackTrace();
-                return null;
-            }}
     }
 
 

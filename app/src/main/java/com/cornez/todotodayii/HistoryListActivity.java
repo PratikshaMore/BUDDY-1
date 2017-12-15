@@ -10,12 +10,15 @@ import android.support.v7.widget.Toolbar;
 import android.telephony.PhoneNumberUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,14 +54,41 @@ public class HistoryListActivity extends AppCompatActivity {
 
     }
 
-    public void clearTasks(View view) {
-//        mDBHelper.clearAll(list);
-        adapt.notifyDataSetChanged();
-//        mDBHelper.resetThis();
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_pet_list, menu);
+        return super.onCreateOptionsMenu(menu);
     }
-    public void deleteDone(View view) {
-//        mDBHelper.deleteSelected(list);
-        adapt.notifyDataSetChanged();
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+//            case R.id.action_search:
+//                Toast.makeText(getApplicationContext(), "Clicked Search", Toast.LENGTH_SHORT).show();
+////                CHOICE_MODE_ENABLED = !CHOICE_MODE_ENABLED;
+////                adapt.notifyDataSetChanged();
+//                return true;
+
+            case R.id.action_delete:
+                Toast.makeText(getApplicationContext(), "Clicked DELETE", Toast.LENGTH_SHORT).show();
+//                petsToDelete.clear();
+//                CHOICE_MODE_ENABLED = !CHOICE_MODE_ENABLED;
+//                if(CHOICE_MODE_ENABLED){
+//                    addNewPetButton.setVisibility(View.INVISIBLE);
+//                    deletePetButton.setVisibility(View.VISIBLE);
+//                } else {
+//                    addNewPetButton.setVisibility(View.VISIBLE);
+//                    deletePetButton.setVisibility(View.INVISIBLE);
+//                }
+                adapt.notifyDataSetChanged();
+                return true;
+
+            default:
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
+
+        }
     }
 
     public void btnAddNewHistClick(View view) {

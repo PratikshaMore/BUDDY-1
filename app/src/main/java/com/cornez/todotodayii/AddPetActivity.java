@@ -20,6 +20,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -35,21 +36,27 @@ import java.util.Calendar;
 import java.util.List;
 import android.view.View.OnClickListener;
 
+import static com.cornez.todotodayii.Utils.getBitmap;
+import static com.cornez.todotodayii.Utils.saveImage;
+
 
 public class AddPetActivity extends AppCompatActivity {
 
     protected DBHelper mDBHelper;
     private List<Pet> list;
-//    private PetArrayAdapter adapt;
+    private Pet petToEdit;
 
     private EditText editPetName;
     private EditText editPetBreed;
-//    private EditText editPetAge;
     private EditText editPetOwner;
     private EditText editPetContact;
     private TextView textViewImagePath;
+    private Button btnAddPet;
 
     private ImageButton addImageButton;
+
+    public int ACTIVITY_MODE_ADD = 1;
+    public int ACTIVITY_MODE_EDIT = 2;
     public static final int CAMERA_PIC_REQUEST = 1;
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     private static String[] PERMISSIONS_STORAGE = {
@@ -57,11 +64,15 @@ public class AddPetActivity extends AppCompatActivity {
             Manifest.permission.WRITE_EXTERNAL_STORAGE
     };
 
+    private int currentActivityMode = 1;
+
+
     public void onBackPressed()
     {
-        this.startActivity(new Intent(getBaseContext(),MainActivity.class));
+        this.startActivity(new Intent(getBaseContext(),PetListActivity.class));
         return;
     }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,28 +89,46 @@ public class AddPetActivity extends AppCompatActivity {
         // TASK 2: ESTABLISH REFERENCES TO THE UI ELEMENTS LOCATED ON THE LAYOUT
         editPetName = (EditText) findViewById(R.id.editPetName);
         editPetBreed = (EditText) findViewById(R.id.editPetBreed);
-//        editPetAge = (EditText) findViewById(R.id.editPetAge);
         editPetOwner = (EditText) findViewById(R.id.editPetOwnerName);
         editPetContact = (EditText) findViewById(R.id.editPetContact);
         textViewImagePath = (TextView) findViewById(R.id.textViewImagePath);
+        addImageButton = (ImageButton) findViewById(R.id.addImageButton);
+
+        btnAddPet = (Button) findViewById(R.id.btnAddNewPet);
 
         // TASK 3: SET UP THE DATABASE
         mDBHelper = new DBHelper(this);
-        /*
-        list = mDBHelper.getAllTasks();
-        adapt = new MyAdapter(this, R.layout.todo_item, list);
-        ListView listTask = (ListView) findViewById(R.id.listView1);
-        listTask.setAdapter(adapt);
-        */
+
+
+        Intent i = getIntent();
+        currentActivityMode = i.getIntExtra("EXTRA_ACTIVITY_MODE", 1);
 
         // TASK 4: ADD THE EVENT LISTENERS
+        if(currentActivityMode == ACTIVITY_MODE_EDIT) {
+            petToEdit = (Pet) i.getSerializableExtra("EXTRA_SERIALIZED_PET");
+            editPetName.setText(petToEdit.getName());
+            editPetBreed.setText(petToEdit.getBreed());
+            editPetOwner.setText(petToEdit.getOwnerName());
+            editPetContact.setText(petToEdit.getContact());
+            textViewImagePath.setText(petToEdit.getImagePath());
+            Bitmap petProfileImage = getBitmap(petToEdit.getImagePath());
+            if(petProfileImage != null){
+                addImageButton.setImageBitmap(petProfileImage);
+            }
+        } else {
+            // CLEAR OUT THE PET EDIT VIEWS
+            editPetName.setText("");
+            editPetBreed.setText("");
+            editPetOwner.setText("");
+            editPetContact.setText("");
+            textViewImagePath.setText("");
+        }
         addImageButtonListener();
     }
 
-    public void btnSaveNewPetClick(View view){
+    public void btnSavePetClick(View view){
         String name = editPetName.getText().toString();
         String breed = editPetBreed.getText().toString();
-//        Integer age = Integer.valueOf(editPetAge.getText().toString());
         String owner = editPetOwner.getText().toString();
         String contact = editPetContact.getText().toString();
         String imagePath = textViewImagePath.getText().toString();
@@ -109,45 +138,26 @@ public class AddPetActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "A field can not be blank", Toast.LENGTH_SHORT).show();
         } else {
 
-            //BUILD A NEW PET ITEM AND ADD IT TO THE DATABASE
             Pet pet = new Pet(-1, name, breed, owner, imagePath, contact);
-            Pet insertedPet = mDBHelper.addPet(pet);
+            Pet insertedPet;
+            //BUILD A NEW PET ITEM AND ADD IT TO THE DATABASE
+            if(currentActivityMode == ACTIVITY_MODE_EDIT){
+                // GET THE ID OF THE CURRENT PET FROM THE INTENT
+                pet.setId(petToEdit.getId());
+                mDBHelper.updatePet(pet);
 
-//            // CLEAR OUT THE PET EDIT VIEWS
-//            editPetName.setText("");
-//            editPetBreed.setText("");
-//            editPetAge.setText("");
-//            editPetOwner.setText("");
-//            editPetContact.setText("");
-//            textViewImagePath.setText("");
-
-            /* PASS THE VALUES TO THE HISTORY ACTIVITY */
-            Intent intent = new Intent(getBaseContext(), AddHistoryActivity.class);
-            intent.putExtra("EXTRA_SERIALIZED_PET", insertedPet);
-            startActivity(intent);
-        }
-    }
-
-    private void saveImage(Bitmap finalBitmap) {
-        String root = Environment.getExternalStorageDirectory().getAbsolutePath();
-        File myDir = new File(root);
-        myDir.mkdirs();
-        String millisStart = String.valueOf(Calendar.getInstance().getTimeInMillis());
+                /* PASS THE VALUES TO THE PET LIST ACTIVITY */
+                Intent intent = new Intent(getBaseContext(), PetListActivity.class);
+                startActivity(intent);
+            } else {
+                insertedPet = mDBHelper.addPet(pet);
+                /* PASS THE VALUES TO THE HISTORY ACTIVITY */
+                Intent intent = new Intent(getBaseContext(), AddHistoryActivity.class);
+                intent.putExtra("EXTRA_SERIALIZED_PET", insertedPet);
+                startActivity(intent);
+            }
 
 
-        String fname = "/Buddy-"+ millisStart+".bmp";
-        File file = new File(myDir, fname);
-        if (file.exists()) file.delete();
-        Log.d("LOAD", root + fname);
-        try {
-            FileOutputStream out = new FileOutputStream(file);
-            finalBitmap.compress(Bitmap.CompressFormat.JPEG, 90, out);
-            out.flush();
-            out.close();
-            textViewImagePath.setText(root+fname);
-        } catch (Exception e) {
-            e.printStackTrace();
-            textViewImagePath.setText("NO_FILE");
         }
     }
 
@@ -182,10 +192,10 @@ public class AddPetActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == CAMERA_PIC_REQUEST) {
             Bitmap image = (Bitmap) data.getExtras().get("data");
-//            ((ImageButton) view).setImageResource(R.drawable.icon2);
-            ImageButton imageview = (ImageButton) findViewById(R.id.addImageButton); //sets imageview as the bitmap
-            imageview.setImageBitmap(image);
-            saveImage(image);
+            ImageButton imageButton = (ImageButton) findViewById(R.id.addImageButton); //sets imageview as the bitmap
+            imageButton.setImageBitmap(image);
+            String savedImagePath = saveImage(image);
+            textViewImagePath.setText(savedImagePath);
         }
     }
 
@@ -266,7 +276,7 @@ public class AddPetActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_pet_list, menu);
         return true;
     }
 
