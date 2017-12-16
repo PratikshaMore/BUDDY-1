@@ -181,7 +181,7 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(KEY_HIST_AGE, history.getAge());
         values.put(KEY_HIST_WEIGHT, history.getWeight());
         values.put(KEY_HIST_DESC, history.getDescription());
-        db.update(DATABASE_TABLE_PET, values, KEY_HIST_ID + " = ?", new String[]{String.valueOf(history.getId())});
+        db.update(DATABASE_TABLE_HISTORY, values, KEY_HIST_ID + " = ?", new String[]{String.valueOf(history.getId())});
         db.close();
 
         return history;
@@ -259,7 +259,7 @@ public class DBHelper extends SQLiteOpenHelper {
 //        db.close();
 //    }
 
-    public void deleteSelected(List<Pet> list) {
+    public void deleteSelectedPets(List<Pet> list) {
         if(list.isEmpty())
             return;
 
@@ -268,6 +268,21 @@ public class DBHelper extends SQLiteOpenHelper {
         for(Iterator<Pet> i=list.iterator() ; i.hasNext();){
             Pet item=i.next();
             db.delete(DATABASE_TABLE_PET, KEY_PET_ID+"="+item.getId(), new String[]{});
+            i.remove();
+        }
+        db.close();
+        return;
+    }
+
+    public void deleteSelectedHistory(List<History> list) {
+        if(list.isEmpty())
+            return;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        for(Iterator<History> i=list.iterator() ; i.hasNext();){
+            History item=i.next();
+            db.delete(DATABASE_TABLE_HISTORY, KEY_HIST_ID+"="+item.getId(), new String[]{});
             i.remove();
         }
         db.close();

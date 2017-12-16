@@ -57,6 +57,7 @@ public class AddPetActivity extends AppCompatActivity {
 
     public int ACTIVITY_MODE_ADD = 1;
     public int ACTIVITY_MODE_EDIT = 2;
+
     public static final int CAMERA_PIC_REQUEST = 1;
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     private static String[] PERMISSIONS_STORAGE = {
@@ -145,12 +146,13 @@ public class AddPetActivity extends AppCompatActivity {
                 // GET THE ID OF THE CURRENT PET FROM THE INTENT
                 pet.setId(petToEdit.getId());
                 mDBHelper.updatePet(pet);
-
+                Toast.makeText(getApplicationContext(), "Update complete", Toast.LENGTH_SHORT).show();
                 /* PASS THE VALUES TO THE PET LIST ACTIVITY */
                 Intent intent = new Intent(getBaseContext(), PetListActivity.class);
                 startActivity(intent);
             } else {
                 insertedPet = mDBHelper.addPet(pet);
+                Toast.makeText(getApplicationContext(), "Insert complete", Toast.LENGTH_SHORT).show();
                 /* PASS THE VALUES TO THE HISTORY ACTIVITY */
                 Intent intent = new Intent(getBaseContext(), AddHistoryActivity.class);
                 intent.putExtra("EXTRA_SERIALIZED_PET", insertedPet);
@@ -198,79 +200,6 @@ public class AddPetActivity extends AppCompatActivity {
             textViewImagePath.setText(savedImagePath);
         }
     }
-
-
-
-//    private class MyAdapter extends ArrayAdapter<Pet_Details> {
-//        Context context;
-//        List<Pet_Details> taskList = new ArrayList<Pet_Details>();
-//
-//        public MyAdapter(Context c, int rId, List<Pet_Details> objects) {
-//            super(c, rId, objects);
-//            taskList = objects;
-//            context = c;
-//        }
-
-//        @Override
-//        public View getView(int position, View convertView, ViewGroup parent) {
-//            // Get the data item for this position
-//            //  User user = getItem(position);
-//            RadioButton isRadioBtn = null;
-//            //  Pet_Details dataProvider = getItem(position);
-//            // Check if an existing view is being reused, otherwise inflate the view
-//            //  ViewHolder viewHolder; // view lookup cache stored in tag
-//            if (convertView == null) {
-//                // If there's no view to re-use, inflate a brand new view for row
-//                LayoutInflater inflater = (LayoutInflater) context
-//                        .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-//                convertView = inflater.inflate(R.layout.todo_item, parent, false);
-//
-//                isRadioBtn = (RadioButton) convertView.findViewById(R.id.radioButton);
-//                convertView.setTag(isRadioBtn);
-//
-////                viewHolder.name = (TextView) convertView.findViewById(R.id.textViewName);
-////                viewHolder.breed = (TextView) convertView.findViewById(R.id.textViewBreed);
-////                viewHolder.age = (TextView) convertView.findViewById(R.id.textViewAge);
-////                viewHolder.weight = (TextView) convertView.findViewById(R.id.textViewWeight);
-////                viewHolder.owner = (TextView) convertView.findViewById(R.id.textViewOwner);
-////                viewHolder.contact = (TextView) convertView.findViewById(R.id.textViewContact);
-////                viewHolder.history = (TextView) convertView.findViewById(R.id.textViewHistory);
-//
-//                isRadioBtn.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        RadioButton button = (RadioButton) view;
-//                        Pet_Details changeTask = (Pet_Details) button.getTag();
-//                        changeTask.setIs_done(button.isChecked() == true ? 1 : 0);
-//                        mDBHelper.updateTask(changeTask);
-//                    }
-//                });
-//
-//
-//            } else {
-//                // View is being recycled, retrieve the viewHolder object from tag
-//                isRadioBtn = (RadioButton) convertView.getTag();
-//            }
-//            // Populate the data from the data object via the viewHolder object
-//            // into the template view.
-//            Pet_Details current = taskList.get(position);
-////              viewHolder.id.setText(dataProvider.get_id());
-////            viewHolder.name.setText("Name: " + dataProvider.getName());
-////            viewHolder.breed.setText("Breed: " + dataProvider.getBreed());
-////            viewHolder.age.setText("Age: " + String.valueOf(dataProvider.getAge()));
-////            viewHolder.weight.setText("Weight: " + String.valueOf(dataProvider.getWeight()));
-////            viewHolder.owner.setText("Owner: " + dataProvider.getOwnerName());
-////            viewHolder.contact.setText("Contact: " + PhoneNumberUtils.formatNumber(dataProvider.getContact()));
-////            viewHolder.history.setText("History: " + dataProvider.getHistory());
-//            isRadioBtn.setText("name: " + current.getName() + " " +"breed: " + current.getBreed());
-//            //isRadioBtn.setText(current.getBreed());
-//            isRadioBtn.setChecked(current.getIs_done() == 1 ? true : false);
-//            isRadioBtn.setTag(current);
-//            return convertView;
-//
-//        }
-
-   // }
 
 
     @Override

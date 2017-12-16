@@ -33,12 +33,15 @@ import java.util.ArrayList;
 import java.util.List;
 import android.view.View.OnClickListener;
 
+import static com.cornez.todotodayii.Utils.getBitmap;
+
 
 public class AddHistoryActivity extends AppCompatActivity {
 
     protected DBHelper mDBHelper;
     private List<Pet> list;
     private Pet currentPet;
+    private History historyToEdit;
 
     private TextView textPetId;
     private TextView textPetName;
@@ -46,6 +49,11 @@ public class AddHistoryActivity extends AppCompatActivity {
     private EditText editHistWeight;
     private EditText editHistAge;
     private EditText editHistDescription;
+
+    public int ACTIVITY_MODE_ADD = 1;
+    public int ACTIVITY_MODE_EDIT = 2;
+
+    private int currentActivityMode = 1;
 
     public void onBackPressed()
     {
@@ -63,16 +71,21 @@ public class AddHistoryActivity extends AppCompatActivity {
         setContentView(R.layout.history_add);
 
 
+
+        // TASK 2: SET UP THE DATABASE
+        mDBHelper = new DBHelper(this);
         Intent i = getIntent();
         currentPet = (Pet) i.getSerializableExtra("EXTRA_SERIALIZED_PET");
+        currentActivityMode = i.getIntExtra("EXTRA_ACTIVITY_MODE", 1);
+
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
         getSupportActionBar().setTitle(currentPet.getName()+"'s visit");
 
 
 
-        // TASK 2: ESTABLISH REFERENCES TO THE UI
-        //      ELEMENTS LOCATED ON THE LAYOUT
+        // TASK 3:  ESTABLISH REFERENCES TO THE UI
+        //          ELEMENTS LOCATED ON THE LAYOUT
         editHistWeight = (EditText) findViewById(R.id.editHistWeight);
         editHistAge = (EditText) findViewById(R.id.editHistAge);
         editHistDescription = (EditText) findViewById(R.id.editHistDescription);
@@ -88,11 +101,24 @@ public class AddHistoryActivity extends AppCompatActivity {
         textPetName.setText(currentPet.getName());
         textPetBreed.setText(currentPet.getBreed());
 
-        // TASK 3: SET UP THE DATABASE
-        mDBHelper = new DBHelper(this);
+
+        if(currentActivityMode == ACTIVITY_MODE_EDIT) {
+            historyToEdit = (History) i.getSerializableExtra("EXTRA_SERIALIZED_HISTORY");
+            editHistWeight.setText(String.valueOf(historyToEdit.getWeight()));
+            editHistAge.setText(String.valueOf(historyToEdit.getAge()));
+            editHistDescription.setText(String.valueOf(historyToEdit.getDescription()));
+        } else {
+            // CLEAR OUT THE PET EDIT VIEWS
+            editHistWeight.setText("");
+            editHistAge.setText("");
+            editHistDescription.setText("");
+        }
+
+
     }
 
-    public void btnSaveNewHistClick(View view){
+
+    public void btnSaveHistClick(View view){
 
 
         //TODO VALIDATE THE EMPTY STRING OF EDIT TEXTS
@@ -101,37 +127,34 @@ public class AddHistoryActivity extends AppCompatActivity {
         String ageString = editHistAge.getText().toString();
         String description = editHistDescription.getText().toString();
 
-        if(petIdString.isEmpty() || weightString.isEmpty() || ageString.isEmpty()){
-            Toast.makeText(getApplicationContext(), "A field can not be blank", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
         Integer petId = Integer.valueOf(textPetId.getText().toString());
         Float weight = Float.valueOf(editHistWeight.getText().toString());
         Integer age = Integer.valueOf(editHistAge.getText().toString());
 
-        // validation for empty fields
+        if(petIdString.isEmpty() || weightString.isEmpty() || ageString.isEmpty()){
+            Toast.makeText(getApplicationContext(), "A field can not be blank", Toast.LENGTH_SHORT).show();
+            return;
+        } else {
+            History history= new History(-1, petId, age, weight, description);
 
-
-        //BUILD A NEW PET ITEM AND ADD IT TO THE DATABASE
-        History history = new History(-1, petId, age, weight, description);
-        mDBHelper.addPetHistory(history);
-
-
-        // CLEAR OUT THE PET EDIT VIEWS
-//        editHistWeight.setText("");
-//        editHistAge.setText("");
-//        editHistDescription.setText("");
-
-//        Toast.makeText(getApplicationContext(), "Visit information added", Toast.LENGTH_SHORT).show();
-
-        /* ADD THE TASK AND SET A NOTIFICATION OF CHANGES */
-        Intent intent = new Intent(getBaseContext(), HistoryListActivity.class);
-        intent.putExtra("EXTRA_SERIALIZED_PET", currentPet);
-        startActivity(intent);
-
-        startActivity(intent);
-
+            //BUILD A NEW PET ITEM AND ADD IT TO THE DATABASE
+            if(currentActivityMode == ACTIVITY_MODE_EDIT){
+                // GET THE ID OF THE CURRENT PET FROM THE INTENT
+                history.setId(historyToEdit.getId());
+                mDBHelper.updatePetHistory(history);
+                Toast.makeText(getApplicationContext(), "Update complete", Toast.LENGTH_SHORT).show();
+                /* PASS THE VALUES TO THE PET LIST ACTIVITY */
+                Intent intent = new Intent(getBaseContext(), PetListActivity.class);
+                startActivity(intent);
+            } else {
+                mDBHelper.addPetHistory(history);
+                /* PASS THE VALUES TO THE HISTORY ACTIVITY */
+                Toast.makeText(getApplicationContext(), "Insert complete", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getBaseContext(), HistoryListActivity.class);
+                intent.putExtra("EXTRA_SERIALIZED_PET", currentPet);
+                startActivity(intent);
+            }
+        }
     }
 
 

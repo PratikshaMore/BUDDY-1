@@ -16,8 +16,10 @@
 <!--</RelativeLayout>-->
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-android:layout_width="match_parent"
-android:layout_height="@dimen/listview_item_height">
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/listview_item_height"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:descendantFocusability="blocksDescendants">
 
     <TextView
         android:id="@+id/lblHistDescription"
@@ -75,5 +77,19 @@ android:layout_height="@dimen/listview_item_height">
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:visibility="visible" />
+        android:visibility="visible"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"/>
+
+    <ImageButton
+        android:id="@+id/histListEditButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:adjustViewBounds="false"
+        android:background="@null"
+        android:cropToPadding="false"
+        app:srcCompat="@android:drawable/ic_menu_edit"
+        android:visibility="visible"/>
 </RelativeLayout>

@@ -2,8 +2,11 @@ package com.cornez.todotodayii;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -15,6 +18,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -23,11 +29,25 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.cornez.todotodayii.Utils.getBitmap;
+
 public class HistoryListActivity extends AppCompatActivity {
     protected DBHelper mDBHelper;
     private List<History> list;
+    private List<History> historyToDelete;
+    private boolean CHOICE_MODE_ENABLED = false;
     private HistoryArrayAdapter adapt;
     private Pet currentPet;
+
+    private ImageView petCardImageView;
+    private TextView petCardNameTextView;
+    private TextView petCardOwnerTextView;
+
+    private FloatingActionButton addNewHistoryButton;
+    private FloatingActionButton deleteHistoryButton;
+
+    private int ACTIVITY_MODE_ADD = 1;
+    private int ACTIVITY_MODE_EDIT = 2;
 
     public void onBackPressed()
     {
@@ -44,6 +64,15 @@ public class HistoryListActivity extends AppCompatActivity {
         setSupportActionBar(myToolbar);
 
 
+        addNewHistoryButton = (FloatingActionButton) findViewById(R.id.btnAddNewHistory);
+        deleteHistoryButton = (FloatingActionButton) findViewById(R.id.btnDeleteHistory);
+
+
+        petCardImageView = (ImageView) findViewById(R.id.petProfileCardImage);
+        petCardNameTextView = (TextView) findViewById(R.id.petProfileCardName);
+        petCardOwnerTextView = (TextView) findViewById(R.id.petProfileCardOwner);
+
+        historyToDelete = new ArrayList<>();
         Intent i = getIntent();
         currentPet = (Pet) i.getSerializableExtra("EXTRA_SERIALIZED_PET");
         if(currentPet.getName().isEmpty()){
@@ -52,6 +81,13 @@ public class HistoryListActivity extends AppCompatActivity {
             getSupportActionBar().setTitle(currentPet.getName()+"'s History");
         }
 
+        Bitmap petProfileCardImage = getBitmap(currentPet.getImagePath());
+        if(petProfileCardImage != null)
+            petCardImageView.setImageBitmap(petProfileCardImage);
+        petCardNameTextView.setText(currentPet.getName());
+        petCardOwnerTextView.setText(currentPet.getOwnerName());
+
+        ListView historyListView = (ListView) findViewById(R.id.historyListView);
     }
 
     @Override
@@ -71,15 +107,15 @@ public class HistoryListActivity extends AppCompatActivity {
 
             case R.id.action_delete:
                 Toast.makeText(getApplicationContext(), "Clicked DELETE", Toast.LENGTH_SHORT).show();
-//                petsToDelete.clear();
-//                CHOICE_MODE_ENABLED = !CHOICE_MODE_ENABLED;
-//                if(CHOICE_MODE_ENABLED){
-//                    addNewPetButton.setVisibility(View.INVISIBLE);
-//                    deletePetButton.setVisibility(View.VISIBLE);
-//                } else {
-//                    addNewPetButton.setVisibility(View.VISIBLE);
-//                    deletePetButton.setVisibility(View.INVISIBLE);
-//                }
+                historyToDelete.clear();
+                CHOICE_MODE_ENABLED = !CHOICE_MODE_ENABLED;
+                if(CHOICE_MODE_ENABLED){
+                    addNewHistoryButton.setVisibility(View.INVISIBLE);
+                    deleteHistoryButton.setVisibility(View.VISIBLE);
+                } else {
+                    addNewHistoryButton.setVisibility(View.VISIBLE);
+                    deleteHistoryButton.setVisibility(View.INVISIBLE);
+                }
                 adapt.notifyDataSetChanged();
                 return true;
 
@@ -97,6 +133,37 @@ public class HistoryListActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+
+    public void btnDeleteHistClick(View view) {
+        int deleteCount = historyToDelete.size();
+
+        new AlertDialog.Builder(this)
+                .setTitle("Delete Visit History")
+                .setMessage("Do you really want to delete " + String.valueOf(deleteCount) + " item(s)?")
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        Toast.makeText(getBaseContext(), "Deleted items(s)", Toast.LENGTH_SHORT).show();
+                        CHOICE_MODE_ENABLED = false;
+                        addNewHistoryButton.setVisibility(View.VISIBLE);
+                        deleteHistoryButton.setVisibility(View.INVISIBLE);
+                        mDBHelper.deleteSelectedHistory(historyToDelete);
+                        historyToDelete.clear();
+                        onHistListUpdated();
+                    }})
+                .setNegativeButton(android.R.string.no, null).show();
+        Log.d("TEST", "TEST 2");
+
+    }
+
+    public void onHistListUpdated(){
+        list = mDBHelper.getAllPetHistory(currentPet.getId());
+        adapt = new HistoryListActivity.HistoryArrayAdapter(this, R.layout.history_item, list);
+        ListView historyListView = (ListView) findViewById(R.id.historyListView);
+        historyListView.setAdapter(adapt);
+    }
+
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -104,8 +171,14 @@ public class HistoryListActivity extends AppCompatActivity {
         currentPet = (Pet) i.getSerializableExtra("EXTRA_SERIALIZED_PET");
         list = mDBHelper.getAllPetHistory(currentPet.getId());
         adapt = new HistoryArrayAdapter(this, R.layout.history_item, list);
-        ListView petListView = (ListView) findViewById(R.id.historyListView);
-        petListView.setAdapter(adapt);
+        ListView historyListView = (ListView) findViewById(R.id.historyListView);
+        historyListView.setAdapter(adapt);
+
+//        Bitmap petProfileCardImage = getBitmap(currentPet.getImagePath());
+//        if(petProfileCardImage != null)
+//            petCardImageView.setImageBitmap(petProfileCardImage);
+//        petCardNameTextView.setText(currentPet.getName());
+//        petCardOwnerTextView.setText(currentPet.getOwnerName());
     }
 
 
@@ -122,7 +195,7 @@ public class HistoryListActivity extends AppCompatActivity {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             // Get the data item for this position
-            History history = getItem(position);
+            final History history = getItem(position);
             // Check if an existing view is being reused, otherwise inflate the view
             if (convertView == null) {
                 convertView = LayoutInflater.from(getContext()).inflate(R.layout.history_item, parent, false);
@@ -131,12 +204,47 @@ public class HistoryListActivity extends AppCompatActivity {
             TextView histAge = (TextView) convertView.findViewById(R.id.lblHistAge);
             TextView histWeight = (TextView) convertView.findViewById(R.id.lblHistWeight);
             TextView histDescription = (TextView) convertView.findViewById(R.id.lblHistDescription);
+            final CheckBox histListCheckBox = (CheckBox) convertView.findViewById(R.id.histListCheckBox);
+            final ImageButton editImageButton = (ImageButton) convertView.findViewById(R.id.histListEditButton);
+
+            histListCheckBox.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View arg0) {
+                    final boolean isChecked = histListCheckBox.isChecked();
+                    if (isChecked){
+                        historyToDelete.add(history);
+                    }else {
+                        historyToDelete.remove(history);
+                    }
+                }
+            });
+
+            editImageButton.setOnClickListener(
+                    new View.OnClickListener() {
+                        public void onClick(View v) {
+                            Intent intent = new Intent(HistoryListActivity.this, AddHistoryActivity.class);
+                            intent.putExtra("EXTRA_SERIALIZED_PET", currentPet);
+                            intent.putExtra("EXTRA_SERIALIZED_HISTORY", history);
+                            intent.putExtra("EXTRA_ACTIVITY_MODE", ACTIVITY_MODE_EDIT);
+                            startActivity(intent);
+                        }
+                    });
 
             // Populate the data into the template view using the data object
             histAge.setText(String.valueOf(history.getAge()));
             histWeight.setText(String.valueOf(history.getWeight()));
             histDescription.setText(history.getDescription());
             // Return the completed view to render on screen
+
+            if(CHOICE_MODE_ENABLED){
+                histListCheckBox.setVisibility(View.VISIBLE);
+                editImageButton.setVisibility(View.GONE);
+            }
+            else{
+                histListCheckBox.setVisibility(View.INVISIBLE);
+                editImageButton.setVisibility(View.VISIBLE);
+            }
+
             return convertView;
         }
     }

@@ -144,7 +144,7 @@ public class PetListActivity extends AppCompatActivity {
                         CHOICE_MODE_ENABLED = false;
                         addNewPetButton.setVisibility(View.VISIBLE);
                         deletePetButton.setVisibility(View.INVISIBLE);
-                        mDBHelper.deleteSelected(petsToDelete);
+                        mDBHelper.deleteSelectedPets(petsToDelete);
                         petsToDelete.clear();
                         onPetListUpdated();
                     }})
