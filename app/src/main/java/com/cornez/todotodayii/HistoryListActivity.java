@@ -68,9 +68,6 @@ public class HistoryListActivity extends AppCompatActivity {
         deleteHistoryButton = (FloatingActionButton) findViewById(R.id.btnDeleteHistory);
 
 
-        petCardImageView = (ImageView) findViewById(R.id.petProfileCardImage);
-        petCardNameTextView = (TextView) findViewById(R.id.petProfileCardName);
-        petCardOwnerTextView = (TextView) findViewById(R.id.petProfileCardOwner);
 
         historyToDelete = new ArrayList<>();
         Intent i = getIntent();
@@ -81,13 +78,22 @@ public class HistoryListActivity extends AppCompatActivity {
             getSupportActionBar().setTitle(currentPet.getName()+"'s History");
         }
 
+
+
+        ListView historyListView = (ListView) findViewById(R.id.historyListView);
+
+        View header = getLayoutInflater().inflate(R.layout.history_list_header,null);
+        historyListView.addHeaderView(header);
+
+        petCardImageView = (ImageView) findViewById(R.id.petProfileCardImage);
+        petCardNameTextView = (TextView) findViewById(R.id.petProfileCardName);
+        petCardOwnerTextView = (TextView) findViewById(R.id.petProfileCardOwner);
+
         Bitmap petProfileCardImage = getBitmap(currentPet.getImagePath());
         if(petProfileCardImage != null)
             petCardImageView.setImageBitmap(petProfileCardImage);
         petCardNameTextView.setText(currentPet.getName());
         petCardOwnerTextView.setText(currentPet.getOwnerName());
-
-        ListView historyListView = (ListView) findViewById(R.id.historyListView);
     }
 
     @Override

@@ -86,5 +86,23 @@
         android:onClick="onClickSeedDatabase"
         android:text="SEED DB" />
 
+    <ImageView
+        android:id="@+id/username_icon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_toLeftOf="@id/editUsername"
+        android:layout_alignTop="@id/editUsername"
+        android:layout_alignBottom="@+id/editUsername"
+        android:src="@drawable/usename"/>
+
+    <ImageView
+        android:id="@+id/password_icon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignBottom="@+id/editPassword"
+        android:layout_alignTop="@id/editPassword"
+        android:layout_toLeftOf="@id/editPassword"
+        android:src="@drawable/password" />
+
 
 </RelativeLayout>
