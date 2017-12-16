@@ -23,6 +23,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,6 +40,7 @@ public class HistoryListActivity extends AppCompatActivity {
     private HistoryArrayAdapter adapt;
     private Pet currentPet;
 
+    private RelativeLayout profileCardRelativeLayout;
     private ImageView petCardImageView;
     private TextView petCardNameTextView;
     private TextView petCardOwnerTextView;
@@ -88,13 +90,28 @@ public class HistoryListActivity extends AppCompatActivity {
         petCardImageView = (ImageView) findViewById(R.id.petProfileCardImage);
         petCardNameTextView = (TextView) findViewById(R.id.petProfileCardName);
         petCardOwnerTextView = (TextView) findViewById(R.id.petProfileCardOwner);
+        profileCardRelativeLayout = (RelativeLayout) findViewById(R.id.petProfileCard);
 
         Bitmap petProfileCardImage = getBitmap(currentPet.getImagePath());
         if(petProfileCardImage != null)
             petCardImageView.setImageBitmap(petProfileCardImage);
         petCardNameTextView.setText(currentPet.getName());
         petCardOwnerTextView.setText(currentPet.getOwnerName());
+
+
+
+        profileCardRelativeLayout.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(HistoryListActivity.this, AddPetActivity.class);
+                intent.putExtra("EXTRA_SERIALIZED_PET", currentPet);
+                intent.putExtra("EXTRA_ACTIVITY_MODE", ACTIVITY_MODE_EDIT);
+                startActivity(intent);
+            }
+        });
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -138,6 +155,7 @@ public class HistoryListActivity extends AppCompatActivity {
         intent.putExtra("EXTRA_SERIALIZED_PET", currentPet);
         startActivity(intent);
     }
+
 
 
     public void btnDeleteHistClick(View view) {
@@ -254,64 +272,5 @@ public class HistoryListActivity extends AppCompatActivity {
             return convertView;
         }
     }
-
-
-//        @Override
-//        public View getView(int position, View convertView, ViewGroup parent) {
-//            // Get the data item for this position
-//            //  User user = getItem(position);
-//            // RadioButton isRadioBtn = null;
-//            //  Pet_Details dataProvider = getItem(position);
-//            // Check if an existing view is being reused, otherwise inflate the view
-//            //  ViewHolder viewHolder; // view lookup cache stored in tag
-//            if (convertView == null) {
-//                // If there's no view to re-use, inflate a brand new view for row
-//                LayoutInflater inflater = (LayoutInflater) context
-//                        .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-//                convertView = inflater.inflate(R.layout.pet_item, parent, false);
-//
-////                isRadioBtn = (RadioButton) convertView.findViewById(R.id.radioButton);
-////                convertView.setTag(isRadioBtn);
-//
-////                viewHolder.name = (TextView) convertView.findViewById(R.id.textViewName);
-////                viewHolder.breed = (TextView) convertView.findViewById(R.id.textViewBreed);
-////                viewHolder.age = (TextView) convertView.findViewById(R.id.textViewAge);
-////                viewHolder.weight = (TextView) convertView.findViewById(R.id.textViewWeight);
-////                viewHolder.owner = (TextView) convertView.findViewById(R.id.textViewOwner);
-////                viewHolder.contact = (TextView) convertView.findViewById(R.id.textViewContact);
-////                viewHolder.history = (TextView) convertView.findViewById(R.id.textViewHistory);
-//
-////                isRadioBtn.setOnClickListener(new View.OnClickListener() {
-////                    @Override
-////                    public void onClick(View view) {
-////                        RadioButton button = (RadioButton) view;
-////                        Pet_Details changeTask = (Pet_Details) button.getTag();
-////                        changeTask.setIs_done(button.isChecked() == true ? 1 : 0);
-////                        mDBHelper.updateTask(changeTask);
-////                    }
-////                });
-//
-//
-//            }
-//            // Populate the data from the data object via the viewHolder object
-//            // into the template view.
-//            Pet current = taskList.get(position);
-////              viewHolder.id.setText(dataProvider.get_id());
-////            viewHolder.name.setText("Name: " + dataProvider.getName());
-////            viewHolder.breed.setText("Breed: " + dataProvider.getBreed());
-////            viewHolder.age.setText("Age: " + String.valueOf(dataProvider.getAge()));
-////            viewHolder.weight.setText("Weight: " + String.valueOf(dataProvider.getWeight()));
-////            viewHolder.owner.setText("Owner: " + dataProvider.getOwnerName());
-////            viewHolder.contact.setText("Contact: " + PhoneNumberUtils.formatNumber(dataProvider.getContact()));
-////            viewHolder.history.setText("History: " + dataProvider.getHistory());
-////            isRadioBtn.setText("name: " + current.getName() + " " +"breed: " + current.getBreed());
-//            //isRadioBtn.setText(current.getBreed());
-////            isRadioBtn.setChecked(current.getIs_done() == 1 ? true : false);
-////            isRadioBtn.setTag(current);
-//            return convertView;
-//
-//        }
-//
-//    }
 
 }
