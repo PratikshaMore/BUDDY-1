@@ -39,6 +39,14 @@
             android:layout_below="@id/petProfileCardName"
             android:layout_centerHorizontal="true"/>
 
+        <TextView
+            android:id="@+id/petProfileCardContact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/petProfileCardOwner"
+            android:layout_centerHorizontal="true"
+            android:text="CONTACT GOES HERE" />
+
     </RelativeLayout>
 
 

@@ -35,22 +35,43 @@
         android:id="@+id/historyPagePetOwner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ONWER GOES HERE"
+        android:text="OWNER GOES HERE"
         android:layout_below="@id/historyPagePetName"
         android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/historyPagePetContact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CONTACT GOES HERE"
+        android:layout_below="@id/historyPagePetOwner"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/lblPetDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/historyPagePetContact"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="13dp"
+        android:ellipsize="end"
+        android:scrollHorizontally="true"
+        android:text="Description:"
+        android:textSize="@dimen/listview_item_heading" />
 
     <TextView
         android:id="@+id/historyPagePetDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/historyPagePetOwner"
+        android:layout_below="@+id/lblPetDescription"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:layout_marginTop="13dp"
         android:ellipsize="end"
         android:scrollHorizontally="true"
-        android:text="DESCRIPTION GOE HERE"
+        android:text="DESCRIPTION GOES HERE"
         android:textSize="@dimen/listview_item_heading" />
 
         <TextView

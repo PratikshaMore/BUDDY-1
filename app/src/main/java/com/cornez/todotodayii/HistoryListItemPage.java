@@ -52,6 +52,7 @@ public class HistoryListItemPage extends AppCompatActivity {
     private ImageView historyPagePetImage;
     private TextView historyPagePetName;
     private TextView historyPagePetOwner;
+    private TextView historyPagePetContact;
     private TextView historyPagePetDescription;
     private TextView historyPagePetAge;
     private TextView historyPagePetWeight;
@@ -90,6 +91,7 @@ public class HistoryListItemPage extends AppCompatActivity {
         historyPagePetImage = (ImageView) findViewById(R.id.historyPagePetImage);
         historyPagePetName = (TextView) findViewById(R.id.historyPagePetName);
         historyPagePetOwner = (TextView) findViewById(R.id.historyPagePetOwner);
+        historyPagePetContact = (TextView) findViewById(R.id.historyPagePetContact);
         historyPagePetDescription = (TextView) findViewById(R.id.historyPagePetDescription);
         historyPagePetAge = (TextView) findViewById(R.id.historyPagePetAge);
         historyPagePetWeight = (TextView) findViewById(R.id.historyPagePetWeight);
@@ -99,6 +101,7 @@ public class HistoryListItemPage extends AppCompatActivity {
         historyPagePetImage.setImageDrawable(roundedBitmapDrawable);
         historyPagePetName.setText(currentPet.getName());
         historyPagePetOwner.setText(currentPet.getOwnerName());
+        historyPagePetContact.setText(currentPet.getContact());
         historyPagePetDescription.setText(currentHistoryItem.getDescription());
         historyPagePetAge.setText(String.valueOf(currentHistoryItem.getAge()));
         historyPagePetWeight.setText(String.valueOf(currentHistoryItem.getWeight()));

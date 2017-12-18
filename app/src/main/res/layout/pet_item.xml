@@ -93,6 +93,27 @@
         android:text="Owner"
         android:textSize="@dimen/listview_item_single_line" />
 
+
+    <TextView
+        android:id="@+id/lblListContact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/petListOwner"
+        android:layout_alignBottom="@+id/petListOwner"
+        android:layout_toStartOf="@+id/petListContact"
+        android:text="Ph:"
+        android:textSize="@dimen/listview_item_single_line" />
+
+    <TextView
+        android:id="@+id/petListContact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/petListOwner"
+        android:layout_alignBottom="@+id/petListOwner"
+        android:layout_toStartOf="@+id/petListCheckBox"
+        android:text="+1 (312)-432-1234"
+        android:textSize="@dimen/listview_item_single_line" />
+
     <CheckBox
         android:id="@+id/petListCheckBox"
         android:layout_width="wrap_content"

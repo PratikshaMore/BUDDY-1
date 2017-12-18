@@ -50,6 +50,7 @@ public class HistoryListActivity extends AppCompatActivity {
     private ImageView petCardImageView;
     private TextView petCardNameTextView;
     private TextView petCardOwnerTextView;
+    private TextView petCardContactTextView;
 
     private FloatingActionButton addNewHistoryButton;
     private FloatingActionButton deleteHistoryButton;
@@ -96,6 +97,7 @@ public class HistoryListActivity extends AppCompatActivity {
         petCardImageView = (ImageView) findViewById(R.id.petProfileCardImage);
         petCardNameTextView = (TextView) findViewById(R.id.petProfileCardName);
         petCardOwnerTextView = (TextView) findViewById(R.id.petProfileCardOwner);
+        petCardContactTextView = (TextView) findViewById(R.id.petProfileCardContact);
         profileCardRelativeLayout = (RelativeLayout) findViewById(R.id.petProfileCard);
 
         RoundedBitmapDrawable roundedBitmapDrawable = MakeRoundableImage(getBaseContext(), currentPet.getImagePath());
@@ -104,6 +106,7 @@ public class HistoryListActivity extends AppCompatActivity {
             petCardImageView.setImageDrawable(roundedBitmapDrawable);
         petCardNameTextView.setText(currentPet.getName());
         petCardOwnerTextView.setText(currentPet.getOwnerName());
+        petCardContactTextView.setText(currentPet.getContact());
 
 
 

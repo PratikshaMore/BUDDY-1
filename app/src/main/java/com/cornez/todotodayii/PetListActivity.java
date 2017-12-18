@@ -192,6 +192,7 @@ public class PetListActivity extends AppCompatActivity {
             TextView petListName = (TextView) convertView.findViewById(R.id.petListName);
             TextView petBreed = (TextView) convertView.findViewById(R.id.petListBreed);
             TextView petOwner = (TextView) convertView.findViewById(R.id.petListOwner);
+            TextView petContact = (TextView) convertView.findViewById(R.id.petListContact);
             ImageView petImageView = (ImageView) convertView.findViewById(R.id.list_item_image);
             final CheckBox petListCheckBox = (CheckBox) convertView.findViewById(R.id.petListCheckBox);
             final ImageButton editImageButton = (ImageButton) convertView.findViewById(R.id.petListEditButton);
@@ -226,6 +227,7 @@ public class PetListActivity extends AppCompatActivity {
             petListName.setText(pet.getName());
             petBreed.setText(pet.getBreed());
             petOwner.setText(pet.getOwnerName());
+            petContact.setText(pet.getContact());
             RoundedBitmapDrawable roundedBitmapDrawable = MakeRoundableImage(getBaseContext(), pet.getImagePath());
 
 
