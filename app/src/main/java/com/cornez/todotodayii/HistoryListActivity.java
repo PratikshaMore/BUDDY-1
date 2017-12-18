@@ -19,6 +19,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
@@ -42,6 +43,8 @@ public class HistoryListActivity extends AppCompatActivity {
     private boolean CHOICE_MODE_ENABLED = false;
     private HistoryArrayAdapter adapt;
     private Pet currentPet;
+
+    private ListView historyListView;
 
     private RelativeLayout profileCardRelativeLayout;
     private ImageView petCardImageView;
@@ -72,7 +75,7 @@ public class HistoryListActivity extends AppCompatActivity {
         addNewHistoryButton = (FloatingActionButton) findViewById(R.id.btnAddNewHistory);
         deleteHistoryButton = (FloatingActionButton) findViewById(R.id.btnDeleteHistory);
 
-
+        historyListView = (ListView) findViewById(R.id.historyListView);
 
         historyToDelete = new ArrayList<>();
         Intent i = getIntent();
@@ -110,6 +113,18 @@ public class HistoryListActivity extends AppCompatActivity {
                 Intent intent = new Intent(HistoryListActivity.this, AddPetActivity.class);
                 intent.putExtra("EXTRA_SERIALIZED_PET", currentPet);
                 intent.putExtra("EXTRA_ACTIVITY_MODE", ACTIVITY_MODE_EDIT);
+                startActivity(intent);
+            }
+        });
+
+        historyListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                int positionAfterHeader = position - 1;
+
+                Intent intent = new Intent(getBaseContext(), HistoryListItemPage.class);
+                intent.putExtra("EXTRA_SERIALIZED_PET", currentPet);
+                intent.putExtra("EXTRA_SERIALIZED_HISTORY", list.get(positionAfterHeader));
                 startActivity(intent);
             }
         });
@@ -257,6 +272,7 @@ public class HistoryListActivity extends AppCompatActivity {
                             startActivity(intent);
                         }
                     });
+
 
             // Populate the data into the template view using the data object
             histAge.setText(String.valueOf(history.getAge()));

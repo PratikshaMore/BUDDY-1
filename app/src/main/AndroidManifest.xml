@@ -23,6 +23,7 @@
         <activity android:name=".AddPetActivity" />
         <activity android:name=".PetListActivity" />
         <activity android:name=".HistoryListActivity"/>
+        <activity android:name=".HistoryListItemPage"/>
     </application>
 
 </manifest>

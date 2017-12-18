@@ -38,34 +38,60 @@
 
         />
 
+    <TextView
+        android:id="@+id/lblListName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_toRightOf="@id/list_item_image"
+        android:textSize="@dimen/listview_item_heading"
+        android:text="Name: " />
 
     <TextView
         android:id="@+id/petListName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_toRightOf="@id/list_item_image"
+        android:layout_toRightOf="@id/lblListName"
         android:textSize="@dimen/listview_item_heading"
         android:text="Name" />
+
+    <TextView
+        android:id="@+id/lblListBreed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lblListName"
+        android:layout_toEndOf="@+id/list_item_image"
+        android:text="Breed:"
+        android:textSize="@dimen/listview_item_single_line" />
 
     <TextView
         android:id="@+id/petListBreed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/petListName"
-        android:layout_toRightOf="@id/list_item_image"
-        android:textSize="@dimen/listview_item_single_line"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:text="Breed" />
+        android:layout_alignBaseline="@+id/lblListBreed"
+        android:layout_alignBottom="@+id/lblListBreed"
+        android:layout_toEndOf="@+id/lblListName"
+        android:text="Breed"
+        android:textSize="@dimen/listview_item_single_line" />
+
+    <TextView
+        android:id="@+id/lblListOwner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lblListBreed"
+        android:layout_toEndOf="@+id/list_item_image"
+        android:text="Owner:"
+        android:textSize="@dimen/listview_item_single_line" />
 
     <TextView
         android:id="@+id/petListOwner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/petListName"
-        android:layout_toRightOf="@id/petListBreed"
-        android:textSize="@dimen/listview_item_single_line"
-        android:text="Owner" />
+        android:layout_alignStart="@+id/petListBreed"
+        android:layout_below="@+id/petListBreed"
+        android:text="Owner"
+        android:textSize="@dimen/listview_item_single_line" />
 
     <CheckBox
         android:id="@+id/petListCheckBox"

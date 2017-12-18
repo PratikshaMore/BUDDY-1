@@ -16,9 +16,9 @@
 <!--</RelativeLayout>-->
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="@dimen/listview_item_height"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:descendantFocusability="blocksDescendants">
 
     <TextView
@@ -27,8 +27,12 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/lblTextAge"
+        android:layout_marginRight="60dp"
         android:layout_marginTop="14dp"
-        android:text="Description goes here"
+        android:maxLines="2"
+        android:scrollHorizontally="true"
+        android:ellipsize="end"
+        android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
         android:textSize="@dimen/listview_item_heading" />
 
     <TextView
@@ -38,8 +42,8 @@
         android:layout_alignBottom="@+id/lblHistAge"
         android:layout_alignParentStart="true"
         android:layout_marginStart="16dp"
-        android:textSize="@dimen/listview_item_single_line"
-        android:text="Age:" />
+        android:text="Age:"
+        android:textSize="@dimen/listview_item_single_line" />
 
     <TextView
         android:id="@+id/lblHistAge"
@@ -58,8 +62,8 @@
         android:layout_alignBottom="@+id/lblHistAge"
         android:layout_marginStart="20dp"
         android:layout_toEndOf="@+id/lblHistAge"
-        android:textSize="@dimen/listview_item_single_line"
-        android:text="Weight:" />
+        android:text="Weight:"
+        android:textSize="@dimen/listview_item_single_line" />
 
     <TextView
         android:id="@+id/lblHistWeight"
@@ -77,19 +81,19 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:visibility="visible"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"/>
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:visibility="visible" />
 
     <ImageButton
         android:id="@+id/histListEditButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
         android:adjustViewBounds="false"
         android:background="@null"
         android:cropToPadding="false"
-        app:srcCompat="@android:drawable/ic_menu_edit"
-        android:visibility="visible"/>
+        android:visibility="visible"
+        app:srcCompat="@android:drawable/ic_menu_edit" />
 </RelativeLayout>

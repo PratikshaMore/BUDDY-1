@@ -208,16 +208,6 @@ public class PetListActivity extends AppCompatActivity {
                 }
             });
 
-            petListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position,
-                                        long id) {
-                    Intent intent = new Intent(getBaseContext(), HistoryListActivity.class);
-                    intent.putExtra("EXTRA_SERIALIZED_PET", list.get(position));
-                    startActivity(intent);
-                }
-            });
-
             editImageButton.setOnClickListener(
                 new View.OnClickListener() {
                     public void onClick(View v) {
