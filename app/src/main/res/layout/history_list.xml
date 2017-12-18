@@ -39,7 +39,7 @@
         app:fabSize="normal"
         app:elevation="0dp"
         app:pressedTranslationZ="0dp"
-        app:rippleColor="@android:color/darker_gray" />
+        app:rippleColor="@android:color/perms_costs_money" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/btnDeleteHistory"
