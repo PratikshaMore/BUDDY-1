@@ -1,0 +1,179 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddPetActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayoutPetForm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/my_toolbar"
+        android:layout_marginTop="40dp"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp">
+
+        <TextView
+            android:id="@+id/lblPetName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/editPetName"
+            android:layout_alignBottom="@+id/editPetName"
+            android:layout_alignParentStart="true"
+            android:text="NAME" />
+
+        <EditText
+            android:id="@+id/editPetName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/addImageButton"
+            android:layout_marginTop="11dp"
+            android:ems="10"
+            android:hint="Enter Pet's name"
+            android:inputType="textPersonName" />
+
+        <!--<TextView-->
+        <!--android:id="@+id/lblPetAge"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignBaseline="@+id/editPetAge"-->
+        <!--android:layout_alignBottom="@+id/editPetAge"-->
+        <!--android:layout_alignParentStart="true"-->
+        <!--android:text="AGE"-->
+        <!--android:visibility="visible" />-->
+
+        <!--<EditText-->
+        <!--android:id="@+id/editPetAge"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentEnd="true"-->
+        <!--android:layout_below="@+id/editPetName"-->
+        <!--android:ems="10"-->
+        <!--android:hint="Enter Age"-->
+        <!--android:inputType="number" />-->
+
+        <TextView
+            android:id="@+id/lblPetBreed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/editPetBreed"
+            android:layout_alignBottom="@+id/editPetBreed"
+            android:layout_alignParentStart="true"
+            android:text="BREED"
+            android:visibility="visible" />
+
+        <EditText
+            android:id="@+id/editPetBreed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/editPetName"
+            android:ems="10"
+            android:hint="Enter Breed" />
+
+        <TextView
+            android:id="@+id/lblOwnerName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/editPetOwnerName"
+            android:layout_alignBottom="@+id/editPetOwnerName"
+            android:layout_toEndOf="@+id/textViewImagePath"
+            android:text="OWNER'S NAME" />
+
+        <EditText
+            android:id="@+id/editPetOwnerName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/editPetBreed"
+            android:ems="10"
+            android:hint="Enter Owner's Name"
+            android:inputType="text" />
+
+        <TextView
+            android:id="@+id/lblContact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/editPetContact"
+            android:layout_alignBottom="@+id/editPetContact"
+            android:layout_alignParentStart="true"
+            android:text="CONTACT" />
+
+        <EditText
+            android:id="@+id/editPetContact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/editPetOwnerName"
+            android:digits="0123456789+"
+            android:ems="10"
+            android:hint="Enter Phone No"
+            android:inputType="phone" />
+
+        <TextView
+            android:id="@+id/textViewImagePath"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/addImageButton"
+            android:layout_centerHorizontal="true"
+            android:text="TSET TSETES TEST"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btnAddPet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/addImageButton"
+        android:layout_marginTop="51dp"
+        android:onClick="btnSavePetClick"
+        android:text="SAVE PET" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="ENTER PET INFORMATION"
+        android:textColor="#1111e9" />
+
+    <ImageButton
+        android:id="@+id/addImageButton"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_below="@+id/relativeLayoutPetForm"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="36dp"
+        android:cropToPadding="false"
+        android:scaleType="fitEnd"
+        android:src="@drawable/camera" />
+
+    <!--<ListView-->
+    <!--android:id="@+id/listView1"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentStart="true"-->
+    <!--android:layout_below="@+id/relativeLayout1"-->
+    <!--android:paddingBottom="4dp"-->
+    <!--android:paddingLeft="30dp"-->
+    <!--android:paddingRight="30dp"-->
+    <!--android:paddingTop="10dp">-->
+
+    <!--</ListView>-->
+</RelativeLayout>
+

@@ -7,53 +7,105 @@
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/btnSignin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="38dp"
-        android:onClick="actionButtons"
-        android:text="SIGN IN" />
+        android:layout_marginBottom="57dp"
+        android:onClick="btnSigninClick"
+        android:textColor="#ffffff"
+        android:background="@color/blue"
+        android:text="SIGN IN"
+        />
 
     <EditText
         android:id="@+id/editUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/editPassword"
-        android:layout_centerHorizontal="true"
+        android:layout_alignStart="@+id/imageViewLogo"
+        android:layout_below="@+id/imageViewLogo"
         android:ems="10"
-        android:hint="Enter your Username"
+        android:hint="          USERNAME"
         android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/editPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/button1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="55dp"
+        android:layout_alignStart="@+id/textWelcomeMessage"
+        android:layout_below="@+id/editUsername"
+        android:layout_marginTop="29dp"
         android:ems="10"
-        android:hint="Enter your Password"
+        android:hint="     PASSWORD"
         android:inputType="textPassword" />
 
+
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/loginError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/editUsername"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"
+        android:text=""
+        android:textColor="#ff0000"
+        />
+
+    <TextView
+        android:id="@+id/textWelcomeMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="18dp"
+        android:layout_marginBottom="18dp"
         android:text="WELCOME!!! PLEASE SIGN-IN...."
-        android:textColor="#0000ff"/>
+        android:textColor="#0000ff"
+        />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imageViewLogo"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:layout_below="@+id/textView2"
+        android:layout_below="@+id/textWelcomeMessage"
         android:layout_centerHorizontal="true"
         android:src="@mipmap/ic_paw" />
+
+    <Button
+        android:id="@+id/resetDB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textWelcomeMessage"
+        android:layout_toStartOf="@+id/imageViewLogo"
+        android:onClick="onClickResetDB"
+        android:text="Clear DB" />
+
+    <Button
+        android:id="@+id/seedDB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imageViewLogo"
+        android:layout_toEndOf="@+id/editUsername"
+        android:onClick="onClickSeedDatabase"
+        android:text="SEED DB" />
+
+    <ImageView
+        android:id="@+id/username_icon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_toLeftOf="@id/editUsername"
+        android:layout_alignTop="@id/editUsername"
+        android:layout_alignBottom="@+id/editUsername"
+        android:src="@drawable/usename"/>
+
+    <ImageView
+        android:id="@+id/password_icon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignBottom="@+id/editPassword"
+        android:layout_alignTop="@id/editPassword"
+        android:layout_toLeftOf="@id/editPassword"
+        android:src="@drawable/password" />
 
 
 </RelativeLayout>
