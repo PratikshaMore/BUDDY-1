@@ -1,6 +1,8 @@
 package com.cornez.todotodayii;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @SuppressWarnings("serial")
 class History implements Serializable{
@@ -10,16 +12,18 @@ class History implements Serializable{
     private int age;
     private float weight;
     private String description;
+    private Date visitDate;
 
     public History() {
     }
 
-    public History(int id, int pid, int age, float weight, String description) {
+    public History(int id, int pid, int age, float weight, String description, Date visitDate) {
         this.id = id;
         this.pid = pid;
         this.age = age;
         this.weight = weight;
         this.description = description;
+        this.visitDate = visitDate;
     }
 
     public int getId() {
@@ -63,6 +67,15 @@ class History implements Serializable{
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getVisitDate() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        return sdf.format(visitDate);
+    }
+
+    public void setVisitDate(Date visitDate) {
+        this.visitDate = visitDate;
     }
 
 }

@@ -11,7 +11,12 @@ import android.util.Log;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.Locale;
 
 public class Utils {
 
@@ -71,5 +76,26 @@ public class Utils {
         RoundedBitmapDrawable roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(context.getResources(), image);
         roundedBitmapDrawable.setCircular(true);
         return roundedBitmapDrawable;
+    }
+
+    public static  String getDateTime() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat(
+                "yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+        Date date = new Date();
+        return dateFormat.format(date);
+    }
+
+    public static Date getDateFromSQLDateTime(String cursorString) {
+        Calendar t = new GregorianCalendar();
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/YYYY",Locale.getDefault());
+        Date dt = null; //replace 4 with the column index
+        try {
+            dt = sdf.parse(cursorString);
+            return dt;
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return new Date();
+        }
+
     }
 }

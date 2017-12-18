@@ -56,6 +56,7 @@ public class HistoryListItemPage extends AppCompatActivity {
     private TextView historyPagePetDescription;
     private TextView historyPagePetAge;
     private TextView historyPagePetWeight;
+    private TextView historyPagePetDate;
 
 
     public void onBackPressed()
@@ -95,6 +96,7 @@ public class HistoryListItemPage extends AppCompatActivity {
         historyPagePetDescription = (TextView) findViewById(R.id.historyPagePetDescription);
         historyPagePetAge = (TextView) findViewById(R.id.historyPagePetAge);
         historyPagePetWeight = (TextView) findViewById(R.id.historyPagePetWeight);
+        historyPagePetDate = (TextView) findViewById(R.id.historyPagePetDate);
 
 
         RoundedBitmapDrawable roundedBitmapDrawable = MakeRoundableImage(getBaseContext(), currentPet.getImagePath());
@@ -105,6 +107,7 @@ public class HistoryListItemPage extends AppCompatActivity {
         historyPagePetDescription.setText(currentHistoryItem.getDescription());
         historyPagePetAge.setText(String.valueOf(currentHistoryItem.getAge()));
         historyPagePetWeight.setText(String.valueOf(currentHistoryItem.getWeight()));
+        historyPagePetDate.setText(String.valueOf(currentHistoryItem.getVisitDate()));
 
     }
 

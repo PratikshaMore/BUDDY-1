@@ -9,9 +9,15 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Debug;
 import android.util.Log;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
+
+import static com.cornez.todotodayii.Utils.getDateFromSQLDateTime;
+import static com.cornez.todotodayii.Utils.getDateTime;
 import static java.lang.Math.toIntExact;
 
 
@@ -36,6 +42,8 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String KEY_HIST_AGE = "age";
     private static final String KEY_HIST_WEIGHT = "weight";
     private static final String KEY_HIST_DESC = "description";
+    private static final String KEY_HIST_DATE = "created_at";
+
 
 
     public DBHelper(Context context) {
@@ -61,7 +69,10 @@ public class DBHelper extends SQLiteOpenHelper {
                 + KEY_HIST_PET_ID + " INTEGER, "
                 + KEY_HIST_AGE + " INTEGER, "
                 + KEY_HIST_WEIGHT + " REAL, "
-                + KEY_HIST_DESC+ " TEXT)";
+                + KEY_HIST_DESC + " TEXT, "
+                + "created_at DATETIME DEFAULT CURRENT_TIMESTAMP )";
+
+
 
         db.execSQL(table2);
     }
@@ -82,7 +93,7 @@ public class DBHelper extends SQLiteOpenHelper {
             values.put(KEY_PET_NAME, "PetName"+i);
             values.put(KEY_PET_BREED, "PetBreed"+i);
             values.put(KEY_PET_OWNER_NAME, "PetOwnerName"+i);
-            values.put(KEY_PET_CONTACT,"PetContact"+i);
+            values.put(KEY_PET_CONTACT, "3238099061");
             values.put(KEY_PET_IMAGE_PATH, "PetImagePath"+i);
             long insertedId = db.insert(DATABASE_TABLE_PET, null, values);
             int insertedIdInt = toIntExact(insertedId);
@@ -227,7 +238,7 @@ public class DBHelper extends SQLiteOpenHelper {
         if(petId == 0)
             selectQuery = "SELECT * FROM " + DATABASE_TABLE_HISTORY;
         else
-            selectQuery = "SELECT * FROM " + DATABASE_TABLE_HISTORY + " WHERE " + KEY_HIST_PET_ID + "=" + String.valueOf(petId);
+            selectQuery = "SELECT * FROM " + DATABASE_TABLE_HISTORY + " WHERE " + KEY_HIST_PET_ID + "=" + String.valueOf(petId) + " ORDER BY "+ KEY_HIST_ID + " DESC";
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -241,7 +252,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 history.setAge(cursor.getInt(2));
                 history.setWeight(cursor.getInt(3));
                 history.setDescription(cursor.getString(4));
-
+                history.setVisitDate(getDateFromSQLDateTime(cursor.getString(5)));
                 petHistoryList.add(history);
             } while (cursor.moveToNext());
         }

@@ -30,6 +30,7 @@ import android.widget.Toast;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import android.view.View.OnClickListener;
 
@@ -135,7 +136,7 @@ public class AddHistoryActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "A field can not be blank", Toast.LENGTH_SHORT).show();
             return;
         } else {
-            History history= new History(-1, petId, age, weight, description);
+            History history= new History(-1, petId, age, weight, description, new Date());
 
             //BUILD A NEW PET ITEM AND ADD IT TO THE DATABASE
             if(currentActivityMode == ACTIVITY_MODE_EDIT){

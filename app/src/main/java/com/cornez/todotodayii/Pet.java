@@ -1,5 +1,7 @@
 package com.cornez.todotodayii;
 
+import android.telephony.PhoneNumberUtils;
+
 import java.io.Serializable;
 
 @SuppressWarnings("serial")
@@ -73,7 +75,7 @@ class Pet implements Serializable {
     }
 
     public String getContact() {
-        return contact;
+        return PhoneNumberUtils.formatNumber(contact);
     }
 
     public void setContact(String contact) {
