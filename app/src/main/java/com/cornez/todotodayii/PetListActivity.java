@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Debug;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -36,6 +37,7 @@ import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.cornez.todotodayii.Utils.MakeRoundableImage;
 import static com.cornez.todotodayii.Utils.getBitmap;
 
 
@@ -234,9 +236,11 @@ public class PetListActivity extends AppCompatActivity {
             petListName.setText(pet.getName());
             petBreed.setText(pet.getBreed());
             petOwner.setText(pet.getOwnerName());
-            Bitmap petProfileImage = getBitmap(pet.getImagePath());
-            if(petProfileImage != null){
-                petImageView.setImageBitmap(petProfileImage);
+            RoundedBitmapDrawable roundedBitmapDrawable = MakeRoundableImage(getBaseContext(), pet.getImagePath());
+
+
+            if(roundedBitmapDrawable != null){
+                petImageView.setImageDrawable(roundedBitmapDrawable);
             }
             else {
                 petImageView.setImageResource(R.drawable.camera);

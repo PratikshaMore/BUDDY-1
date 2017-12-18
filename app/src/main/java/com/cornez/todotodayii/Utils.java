@@ -1,8 +1,11 @@
 package com.cornez.todotodayii;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Environment;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.util.Log;
 
 import java.io.File;
@@ -48,5 +51,25 @@ public class Utils {
             e.printStackTrace();
             return "NO_FILE";
         }
+    }
+
+    public static RoundedBitmapDrawable MakeRoundableImage(Context context, String path){
+        Bitmap image = getBitmap(path);
+        if(image == null){
+            image = BitmapFactory.decodeResource(context.getResources(), R.drawable.camera);
+        }
+
+        RoundedBitmapDrawable roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(context.getResources(), image);
+        roundedBitmapDrawable.setCircular(true);
+        return roundedBitmapDrawable;
+    }
+
+    public static RoundedBitmapDrawable MakeRoundableImage(Context context, Bitmap image){
+        if(image == null){
+            image = BitmapFactory.decodeResource(context.getResources(), R.drawable.camera);
+        }
+        RoundedBitmapDrawable roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(context.getResources(), image);
+        roundedBitmapDrawable.setCircular(true);
+        return roundedBitmapDrawable;
     }
 }

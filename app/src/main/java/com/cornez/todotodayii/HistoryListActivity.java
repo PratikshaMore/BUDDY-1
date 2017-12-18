@@ -6,6 +6,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -30,6 +32,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.cornez.todotodayii.Utils.MakeRoundableImage;
 import static com.cornez.todotodayii.Utils.getBitmap;
 
 public class HistoryListActivity extends AppCompatActivity {
@@ -92,9 +95,10 @@ public class HistoryListActivity extends AppCompatActivity {
         petCardOwnerTextView = (TextView) findViewById(R.id.petProfileCardOwner);
         profileCardRelativeLayout = (RelativeLayout) findViewById(R.id.petProfileCard);
 
-        Bitmap petProfileCardImage = getBitmap(currentPet.getImagePath());
-        if(petProfileCardImage != null)
-            petCardImageView.setImageBitmap(petProfileCardImage);
+        RoundedBitmapDrawable roundedBitmapDrawable = MakeRoundableImage(getBaseContext(), currentPet.getImagePath());
+
+        if(roundedBitmapDrawable != null)
+            petCardImageView.setImageDrawable(roundedBitmapDrawable);
         petCardNameTextView.setText(currentPet.getName());
         petCardOwnerTextView.setText(currentPet.getOwnerName());
 

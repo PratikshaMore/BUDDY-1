@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.Debug;
 import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.telephony.PhoneNumberUtils;
@@ -36,6 +37,7 @@ import java.util.Calendar;
 import java.util.List;
 import android.view.View.OnClickListener;
 
+import static com.cornez.todotodayii.Utils.MakeRoundableImage;
 import static com.cornez.todotodayii.Utils.getBitmap;
 import static com.cornez.todotodayii.Utils.saveImage;
 
@@ -195,7 +197,8 @@ public class AddPetActivity extends AppCompatActivity {
         if (requestCode == CAMERA_PIC_REQUEST) {
             Bitmap image = (Bitmap) data.getExtras().get("data");
             ImageButton imageButton = (ImageButton) findViewById(R.id.addImageButton); //sets imageview as the bitmap
-            imageButton.setImageBitmap(image);
+            RoundedBitmapDrawable roundedBitmapDrawable = MakeRoundableImage(getBaseContext(), image);
+            imageButton.setImageDrawable(roundedBitmapDrawable);
             String savedImagePath = saveImage(image);
             textViewImagePath.setText(savedImagePath);
         }
