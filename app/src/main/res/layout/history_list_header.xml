@@ -32,26 +32,52 @@
             android:text="NAME GOES HERE"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/petProfileCardOwner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/petProfileCardName"
-            android:layout_centerHorizontal="true"
-            android:text="ONWER GOES HERE"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/petProfileCardContact"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/petProfileCardOwner"
-            android:layout_centerHorizontal="true"
-            android:text="CONTACT GOES HERE"
-            android:textStyle="bold" />
-
     </RelativeLayout>
 
+    <TextView
+        android:id="@+id/petProfileCardContact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/petProfileCard"
+        android:layout_marginEnd="11dp"
+        android:layout_marginTop="18dp"
+        android:text="CONTACT GOES HERE"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/petProfileCardOwner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView6"
+        android:layout_alignBottom="@+id/textView6"
+        android:layout_toEndOf="@+id/textView5"
+        android:text="ONWER GOES HERE"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/petProfileCardOwner"
+        android:layout_alignBottom="@+id/petProfileCardOwner"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="13dp"
+        android:text="OWNER:    "
+        android:textColor="#439cd4"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/petProfileCardContact"
+        android:layout_alignBottom="@+id/petProfileCardContact"
+        android:layout_marginEnd="14dp"
+        android:layout_toStartOf="@+id/petProfileCardContact"
+        android:text="Ph:"
+        android:textColor="#439cd4"
+        android:textStyle="bold" />
 
 
 </RelativeLayout>

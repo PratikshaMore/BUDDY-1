@@ -8,7 +8,7 @@
         android:id="@+id/my_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="#08bc50"
+        android:background="#439cd4"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
@@ -36,8 +36,9 @@
         android:id="@+id/historyPagePetOwner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/historyPagePetName"
-        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/historyPagePetName"
+        android:layout_marginTop="33dp"
+        android:layout_toEndOf="@+id/lblTextWeight"
         android:text="OWNER GOES HERE"
         android:textStyle="bold" />
 
@@ -45,8 +46,9 @@
         android:id="@+id/historyPagePetContact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/historyPagePetOwner"
-        android:layout_centerHorizontal="true"
+        android:layout_alignBaseline="@+id/historyPagePetOwner"
+        android:layout_alignBottom="@+id/historyPagePetOwner"
+        android:layout_alignStart="@+id/lblPetDate"
         android:text="CONTACT GOES HERE"
         android:textStyle="bold" />
 
@@ -137,6 +139,28 @@
             android:layout_toEndOf="@+id/lblTextWeight"
             android:text="123"
             android:textSize="@dimen/listview_item_single_line" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/historyPagePetOwner"
+        android:layout_alignBottom="@+id/historyPagePetOwner"
+        android:layout_alignParentStart="true"
+        android:text="OWNER: "
+        android:textColor="#439cd4"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/historyPagePetContact"
+        android:layout_alignBottom="@+id/historyPagePetContact"
+        android:layout_toStartOf="@+id/historyPagePetContact"
+        android:text="Ph :"
+        android:textColor="#439cd4"
+        android:textStyle="bold" />
 
 
 </RelativeLayout>
