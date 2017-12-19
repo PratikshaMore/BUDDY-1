@@ -5,8 +5,9 @@
     tools:context="com.cornez.todotodayii.PetListActivity">
     <item
         android:id="@+id/action_delete"
-        android:icon="@drawable/trash_icon"
+        android:icon="@drawable/trash_icon_white"
         android:title="Delete"
+        android:tint="#FFF"
         app:showAsAction="ifRoom"
         />
 
