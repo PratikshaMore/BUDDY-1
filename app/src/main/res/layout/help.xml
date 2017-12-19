@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin">
+
+    <Button
+        android:id="@+id/seedDB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:onClick="onClickSeedDatabase"
+        android:text="SEED DB" />
+
+    <Button
+        android:id="@+id/resetDB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/seedDB"
+        android:layout_alignParentEnd="true"
+        android:onClick="onClickResetDB"
+        android:text="Clear DB" />
+
+
+    <TextView
+        android:id="@+id/helpIntro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_gravity="center_vertical|right"
+        android:text="BUDDY is designed for veterinary doctors in order to manage pets he treats. This application helps the doctor manage his pets without the need for an assistant to do this job.  The purpose of our application is to reduce the burden of keeping track of pet visits manually, which may sometimes result in incorrect information about pet’s health and will lead to wrong treatments."
+        android:layout_below="@id/resetDB"/>
+
+    <TextView
+        android:id="@+id/helpFunctionality"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/helpIntro"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_gravity="center_vertical|right"
+        android:text="The Basic functionalities of the application are:
+Create a new profile for any new pet visiting his/her clinic and also add a new profile picture.
+Update any changes in the pet’s health in his profile.
+Delete the record of pets he/she doesn’t treat anymore.
+View the list of all the pets he/she is treating."/>
+</RelativeLayout>

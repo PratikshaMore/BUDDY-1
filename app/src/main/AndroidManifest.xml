@@ -24,6 +24,7 @@
         <activity android:name=".PetListActivity" />
         <activity android:name=".HistoryListActivity"/>
         <activity android:name=".HistoryListItemPage"/>
+        <activity android:name=".HelpActivity"/>
     </application>
 
 </manifest>

@@ -48,6 +48,11 @@ public class MainActivity extends Activity {
         mDBHelper = new DBHelper(this);
     }
 
+    public void btnHelpClick(View view){
+        Intent intent1 = new Intent(getBaseContext(), HelpActivity.class);
+        startActivity(intent1);
+    }
+
 
     public void btnSigninClick(View view)
     {
@@ -80,11 +85,11 @@ public class MainActivity extends Activity {
 //
 //    }
 
-    public void onClickResetDB(View view){
-        mDBHelper.resetThis();
-    }
-    public void onClickSeedDatabase(View view){
-        mDBHelper.seedDatabase();
-    }
+//    public void onClickResetDB(View view){
+//        mDBHelper.resetThis();
+//    }
+//    public void onClickSeedDatabase(View view){
+//        mDBHelper.seedDatabase();
+//    }
 }
 
