@@ -9,7 +9,7 @@
     <string name="task">Enter TODO Item</string>
     <string name="delete">Clear all TODOs</string>
     <string name="desc">Description</string>
-    <string name="helpText"><u>Help</u></string>
+    <string name="helpText"><u>HELP</u></string>
 
 
 </resources>

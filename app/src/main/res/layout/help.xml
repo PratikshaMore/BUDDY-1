@@ -34,6 +34,7 @@
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_gravity="center_vertical|right"
         android:text="BUDDY is designed for veterinary doctors in order to manage pets he treats. This application helps the doctor manage his pets without the need for an assistant to do this job.  The purpose of our application is to reduce the burden of keeping track of pet visits manually, which may sometimes result in incorrect information about pet’s health and will lead to wrong treatments."
+        android:textSize="20sp"
         android:layout_below="@id/resetDB"/>
 
     <TextView
@@ -42,6 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/helpIntro"
         android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:textSize="20sp"
         android:layout_gravity="center_vertical|right"
         android:text="The Basic functionalities of the application are:
 Create a new profile for any new pet visiting his/her clinic and also add a new profile picture.

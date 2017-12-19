@@ -36,7 +36,6 @@
             android:id="@+id/lblPetId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:layout_above="@+id/lblPetBreed"
             android:layout_alignStart="@+id/lblPetBreed"
             android:layout_marginBottom="11dp"
@@ -51,6 +50,27 @@
             android:layout_marginBottom="21dp"
             android:text="Breed goes here" />
 
+        <EditText
+            android:id="@+id/editHistAge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/editHistWeight"
+            android:layout_alignStart="@+id/editHistWeight"
+            android:layout_marginBottom="12dp"
+            android:ems="10"
+            android:hint="Age"
+            android:inputType="numberDecimal" />
+
+
+        <TextView
+            android:id="@+id/lblPetAge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/editHistAge"
+            android:layout_marginEnd="14dp"
+            android:text="AGE"
+            android:textColor="#439cd4"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/lblWeight"
@@ -74,26 +94,6 @@
             android:inputType="numberDecimal" />
 
 
-        <TextView
-            android:id="@+id/lblPetAge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/editHistAge"
-            android:layout_marginEnd="14dp"
-            android:text="AGE"
-            android:textColor="#439cd4"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/editHistAge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/editHistWeight"
-            android:layout_alignStart="@+id/editHistWeight"
-            android:layout_marginBottom="12dp"
-            android:ems="10"
-            android:hint="Age"
-            android:inputType="numberDecimal" />
 
         <EditText
             android:id="@+id/editHistDescription"
