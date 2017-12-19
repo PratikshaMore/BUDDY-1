@@ -15,7 +15,7 @@
         android:layout_marginBottom="57dp"
         android:onClick="btnSigninClick"
         android:textColor="#ffffff"
-        android:background="@color/blue"
+        android:background="#439cd4"
         android:text="SIGN IN"
         />
 
@@ -23,8 +23,8 @@
         android:id="@+id/editUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/imageViewLogo"
-        android:layout_below="@+id/imageViewLogo"
+        android:layout_above="@+id/password_icon"
+        android:layout_toEndOf="@+id/password_icon"
         android:ems="10"
         android:hint="          USERNAME"
         android:inputType="textPersonName" />
@@ -33,9 +33,9 @@
         android:id="@+id/editPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/textWelcomeMessage"
-        android:layout_below="@+id/editUsername"
-        android:layout_marginTop="29dp"
+        android:layout_above="@+id/btnSignin"
+        android:layout_alignStart="@+id/imageViewLogo"
+        android:layout_marginBottom="27dp"
         android:ems="10"
         android:hint="     PASSWORD"
         android:inputType="textPassword" />
@@ -59,7 +59,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="18dp"
-        android:text="WELCOME!!! PLEASE SIGN-IN...."
+        android:text="                             "
         android:textColor="#0000ff"
         />
 
@@ -67,8 +67,9 @@
         android:id="@+id/imageViewLogo"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:layout_below="@+id/textWelcomeMessage"
+        android:layout_above="@+id/loginError"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="18dp"
         android:src="@mipmap/ic_paw" />
 
     <Button
@@ -84,8 +85,8 @@
         android:id="@+id/seedDB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/imageViewLogo"
-        android:layout_toEndOf="@+id/editUsername"
+        android:layout_below="@+id/textWelcomeMessage"
+        android:layout_toEndOf="@+id/imageViewLogo"
         android:onClick="onClickSeedDatabase"
         android:text="SEED DB" />
 
@@ -96,6 +97,7 @@
         android:layout_toLeftOf="@id/editUsername"
         android:layout_alignTop="@id/editUsername"
         android:layout_alignBottom="@+id/editUsername"
+        android:tint="#439cd4"
         android:src="@drawable/usename"/>
 
     <ImageView
@@ -105,6 +107,7 @@
         android:layout_alignBottom="@+id/editPassword"
         android:layout_alignTop="@id/editPassword"
         android:layout_toLeftOf="@id/editPassword"
+        android:tint="#0ce262"
         android:src="@drawable/password" />
 
 

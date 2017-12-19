@@ -9,7 +9,7 @@
         android:id="@+id/my_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/orange"
+        android:background="#0ce262"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
@@ -60,7 +60,7 @@
             android:layout_alignBottom="@+id/editHistWeight"
             android:layout_alignParentStart="true"
             android:text="WEIGHT"
-            android:textColor="@color/orange"
+            android:textColor="#439cd4"
             android:textStyle="bold" />
 
         <EditText
@@ -81,7 +81,7 @@
             android:layout_alignBaseline="@+id/editHistAge"
             android:layout_marginEnd="14dp"
             android:text="AGE"
-            android:textColor="@color/orange"
+            android:textColor="#439cd4"
             android:textStyle="bold" />
 
         <EditText
@@ -116,7 +116,7 @@
             android:layout_alignBottom="@+id/editHistDescription"
             android:layout_alignParentStart="true"
             android:text="DESCRIPTION"
-            android:textColor="@color/orange"
+            android:textColor="#439cd4"
             android:textStyle="bold" />
 
         <TextView
@@ -126,7 +126,8 @@
             android:layout_alignStart="@+id/lblPetAge"
             android:layout_alignTop="@+id/lblPetName"
             android:text="NAME"
-            android:textColor="@color/orange" />
+            android:textColor="#439cd4"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textView2"
@@ -136,7 +137,8 @@
             android:layout_alignBottom="@+id/lblPetId"
             android:layout_alignStart="@+id/textView"
             android:text="ID"
-            android:textColor="@color/orange" />
+            android:textColor="#439cd4"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textView4"
@@ -145,16 +147,8 @@
             android:layout_alignParentStart="true"
             android:layout_alignTop="@+id/lblPetBreed"
             android:text="BREED"
-            android:textColor="@color/orange" />
-
-        <Button
-            android:id="@+id/btnAddHistory"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/editHistDescription"
-            android:layout_marginTop="39dp"
-            android:onClick="btnSaveHistClick"
-            android:text="SAVE Visit Info" />
+            android:textColor="#439cd4"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textView7"
@@ -165,6 +159,18 @@
             android:layout_alignParentEnd="true"
             android:text="lbs" />
 
+        <Button
+            android:id="@+id/btnAddHistory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editHistDescription"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="39dp"
+            android:onClick="btnSaveHistClick"
+            android:text="SAVE VISIT INFORMATION"
+            android:textColor="#ffffff"
+            android:backgroundTint="#439cd4"/>
+
     </RelativeLayout>
 
     <TextView
@@ -174,8 +180,8 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:text="ENTER Vist Information"
-        android:textColor="#1111e9" />
+        android:text="ENTER VISIT INFORMATION"
+        android:textColor="#439cd4" />
 
 </RelativeLayout>
 

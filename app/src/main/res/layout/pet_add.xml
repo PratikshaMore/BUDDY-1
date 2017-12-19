@@ -8,7 +8,7 @@
         android:id="@+id/my_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/orange"
+        android:background="#08bc50"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
@@ -32,14 +32,14 @@
             android:layout_alignParentStart="true"
             android:text="NAME"
             android:textStyle="bold"
-            android:textColor="@color/orange" />
+            android:textColor="#439cd4" />
 
         <EditText
             android:id="@+id/editPetName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="11dp"
+            android:layout_alignStart="@+id/editPetBreed"
+            android:layout_below="@+id/textViewImagePath"
             android:ems="10"
             android:hint="Enter Pet's name"
             android:inputType="textPersonName" />
@@ -73,14 +73,14 @@
             android:layout_alignParentStart="true"
             android:text="BREED"
             android:textStyle="bold"
-            android:textColor="@color/orange"
+            android:textColor="#439cd4"
             android:visibility="visible" />
 
         <EditText
             android:id="@+id/editPetBreed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
+            android:layout_alignStart="@+id/editPetOwnerName"
             android:layout_below="@+id/editPetName"
             android:ems="10"
             android:hint="Enter Breed" />
@@ -94,14 +94,15 @@
             android:layout_toEndOf="@+id/textViewImagePath"
             android:text="OWNER'S NAME"
             android:textStyle="bold"
-            android:textColor="@color/orange" />
+            android:textColor="#439cd4" />
 
         <EditText
             android:id="@+id/editPetOwnerName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
             android:layout_below="@+id/editPetBreed"
+            android:layout_marginStart="20dp"
+            android:layout_toEndOf="@+id/lblOwnerName"
             android:ems="10"
             android:hint="Enter Owner's Name"
             android:inputType="text" />
@@ -115,13 +116,13 @@
             android:layout_alignParentStart="true"
             android:text="CONTACT"
             android:textStyle="bold"
-            android:textColor="@color/orange" />
+            android:textColor="#439cd4" />
 
         <EditText
             android:id="@+id/editPetContact"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
+            android:layout_alignStart="@+id/editPetOwnerName"
             android:layout_below="@+id/editPetOwnerName"
             android:digits="0123456789+"
             android:ems="10"
@@ -140,12 +141,14 @@
 
     <Button
         android:id="@+id/btnAddPet"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
         android:layout_below="@+id/addImageButton"
-        android:layout_marginTop="51dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp"
         android:onClick="btnSavePetClick"
+        android:backgroundTint="#439cd4"
+        android:textColor="#ffffff"
         android:text="SAVE PET" />
 
     <TextView
@@ -156,7 +159,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:text="ENTER PET INFORMATION"
-        android:textColor="#1111e9" />
+        android:textColor="#439cd4" />
 
     <ImageButton
         android:id="@+id/addImageButton"
@@ -166,7 +169,9 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="36dp"
         android:cropToPadding="false"
-        android:scaleType="fitEnd"
+        android:scaleType="fitCenter"
+        android:backgroundTint="#ffffff"
+        android:radius = "4dp"
         android:src="@drawable/camera" />
 
     <!--<ListView-->

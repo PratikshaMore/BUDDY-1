@@ -8,7 +8,7 @@
         android:id="@+id/my_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/orange"
+        android:background="#08bc50"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
@@ -29,23 +29,26 @@
         android:layout_below="@+id/historyPagePetImage"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="14dp"
-        android:text="NAME GOES HERE" />
+        android:text="NAME GOES HERE"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/historyPagePetOwner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="OWNER GOES HERE"
         android:layout_below="@id/historyPagePetName"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:text="OWNER GOES HERE"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/historyPagePetContact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="CONTACT GOES HERE"
         android:layout_below="@id/historyPagePetOwner"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:text="CONTACT GOES HERE"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/lblPetDescription"

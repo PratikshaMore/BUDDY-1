@@ -10,7 +10,7 @@
         android:id="@+id/my_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/orange"
+        android:background="#0ce262"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
@@ -43,7 +43,7 @@
         app:fabSize="normal"
         app:elevation="0dp"
         app:pressedTranslationZ="0dp"
-        android:backgroundTint="@color/orange"/>
+        android:backgroundTint="#439cd4"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/btnDeletePet"
@@ -59,7 +59,7 @@
         app:fabSize="normal"
         app:elevation="0dp"
         app:pressedTranslationZ="0dp"
-        app:rippleColor="@android:color/darker_gray"
+        android:backgroundTint="#439cd4"
         android:visibility="invisible"/>
     <!--<Button-->
         <!--android:id="@+id/button2"-->
