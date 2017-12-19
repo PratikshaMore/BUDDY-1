@@ -85,12 +85,12 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="29dp"
-        android:onClick="btnHelpClick"
-        android:text="@string/helpText"
-        android:selectAllOnFocus="false"
-        android:linksClickable="false"
+        android:layout_marginBottom="15dp"
         android:autoLink="all"
+        android:linksClickable="false"
+        android:onClick="btnHelpClick"
+        android:selectAllOnFocus="false"
+        android:text="@string/helpText"
         android:textColor="#439cd4" />
 
 
