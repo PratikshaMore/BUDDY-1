@@ -35,13 +35,20 @@ public class HelpActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.help);
+        mDBHelper = new DBHelper(this);
+
     }
 
     public void onClickResetDB(View view){
         mDBHelper.resetThis();
+        Toast.makeText(getApplicationContext(), "Database RESET", Toast.LENGTH_SHORT).show();
+
+
     }
     public void onClickSeedDatabase(View view){
         mDBHelper.seedDatabase();
+        Toast.makeText(getApplicationContext(), "Database seeded with random values", Toast.LENGTH_SHORT).show();
+
     }
 }
 

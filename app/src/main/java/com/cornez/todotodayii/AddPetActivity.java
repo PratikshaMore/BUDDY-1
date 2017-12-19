@@ -208,7 +208,7 @@ public class AddPetActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu.
-        getMenuInflater().inflate(R.menu.menu_pet_list, menu);
+        getMenuInflater().inflate(R.menu.menu_basic, menu);
         return true;
     }
 
