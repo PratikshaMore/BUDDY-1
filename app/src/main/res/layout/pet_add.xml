@@ -10,7 +10,7 @@
         android:layout_height="?attr/actionBarSize"
         android:background="#439cd4"
         android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:theme="@style/ToolBarStyle"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
     <RelativeLayout
@@ -163,8 +163,8 @@
 
     <ImageButton
         android:id="@+id/addImageButton"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_below="@+id/relativeLayoutPetForm"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="36dp"
