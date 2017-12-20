@@ -69,7 +69,7 @@ public class AddHistoryActivity extends AppCompatActivity {
         editHistAge = (EditText) findViewById(R.id.editHistAge);
         editHistDescription = (EditText) findViewById(R.id.editHistDescription);
 
-        textPetId = (TextView) findViewById(R.id.lblPetId);
+       textPetId = (TextView) findViewById(R.id.lblPetId);
         textPetName = (TextView) findViewById(R.id.lblPetName);
         textPetBreed = (TextView) findViewById(R.id.lblPetBreed);
 
@@ -79,6 +79,8 @@ public class AddHistoryActivity extends AppCompatActivity {
         textPetId.setText(String.valueOf(currentPet.getId()));
         textPetName.setText(currentPet.getName());
         textPetBreed.setText(currentPet.getBreed());
+        editHistAge.requestFocus();
+        textPetId.setVisibility(View.INVISIBLE);
 
 
         if(currentActivityMode == ACTIVITY_MODE_EDIT) {
@@ -114,7 +116,7 @@ public class AddHistoryActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "A field can not be blank", Toast.LENGTH_SHORT).show();
             return;
         } else {
-            History history= new History(-1, petId, age, weight, description, new Date());
+            History history= new History(-1,petId,age, weight, description, new Date());
 
             //BUILD A NEW PET ITEM AND ADD IT TO THE DATABASE
             if(currentActivityMode == ACTIVITY_MODE_EDIT){

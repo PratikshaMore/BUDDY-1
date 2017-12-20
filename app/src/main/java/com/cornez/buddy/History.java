@@ -17,7 +17,7 @@ class History implements Serializable{
     public History() {
     }
 
-    public History(int id, int pid, int age, float weight, String description, Date visitDate) {
+    public History(int id,int pid, int age, float weight, String description, Date visitDate) {
         this.id = id;
         this.pid = pid;
         this.age = age;
