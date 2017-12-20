@@ -59,9 +59,9 @@ public class MainActivity extends Activity {
         login_name = username.getText().toString();
         login_password = password.getText().toString();
 
-    // if(true)
-      if((login_name.matches("Keerthana") && login_password.matches("abcd"))|| (login_name.matches("Pratiksha")&& login_password.matches("1234")))
-
+//        TODO UNCOMMENT THIS BEFORE FINALS
+//      if((login_name.matches("Keerthana") && login_password.matches("abcd"))|| (login_name.matches("Pratiksha")&& login_password.matches("1234")))
+        if(true)
         {
             Intent intent1 = new Intent(getBaseContext(), PetListActivity.class);
             startActivity(intent1);

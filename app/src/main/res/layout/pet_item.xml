@@ -42,19 +42,21 @@
         android:id="@+id/lblListName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_toRightOf="@id/list_item_image"
-        android:textSize="@dimen/listview_item_heading"
-        android:text="Name: " />
+        android:layout_above="@+id/petListCheckBox"
+        android:layout_toEndOf="@+id/list_item_image"
+        android:text="Name: "
+        android:textSize="@dimen/listview_item_heading" />
 
     <TextView
         android:id="@+id/petListName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_toRightOf="@id/lblListName"
-        android:textSize="@dimen/listview_item_heading"
-        android:text="Name" />
+        android:layout_alignBaseline="@+id/lblListName"
+        android:layout_alignBottom="@+id/lblListName"
+        android:layout_marginStart="12dp"
+        android:layout_toEndOf="@+id/lblListName"
+        android:text="Name"
+        android:textSize="@dimen/listview_item_heading" />
 
     <TextView
         android:id="@+id/lblListBreed"
@@ -69,9 +71,8 @@
         android:id="@+id/petListBreed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/lblListBreed"
-        android:layout_alignBottom="@+id/lblListBreed"
-        android:layout_toEndOf="@+id/lblListName"
+        android:layout_above="@+id/petListOwner"
+        android:layout_alignStart="@+id/petListName"
         android:text="Breed"
         android:textSize="@dimen/listview_item_single_line" />
 
@@ -88,8 +89,9 @@
         android:id="@+id/petListOwner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/petListBreed"
-        android:layout_below="@+id/petListBreed"
+        android:layout_alignBaseline="@+id/lblListOwner"
+        android:layout_alignBottom="@+id/lblListOwner"
+        android:layout_alignStart="@+id/petListName"
         android:text="Owner"
         android:textSize="@dimen/listview_item_single_line" />
 
@@ -98,9 +100,8 @@
         android:id="@+id/lblListContact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/petListOwner"
-        android:layout_alignBottom="@+id/petListOwner"
-        android:layout_toStartOf="@+id/petListContact"
+        android:layout_below="@+id/lblListOwner"
+        android:layout_toEndOf="@+id/list_item_image"
         android:text="Ph:"
         android:textSize="@dimen/listview_item_single_line" />
 
@@ -108,9 +109,8 @@
         android:id="@+id/petListContact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/petListOwner"
-        android:layout_alignBottom="@+id/petListOwner"
-        android:layout_toStartOf="@+id/petListCheckBox"
+        android:layout_alignStart="@+id/petListOwner"
+        android:layout_below="@+id/petListOwner"
         android:text="+1 (312)-432-1234"
         android:textSize="@dimen/listview_item_single_line" />
 
