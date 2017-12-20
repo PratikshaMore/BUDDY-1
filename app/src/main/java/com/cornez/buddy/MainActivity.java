@@ -44,9 +44,8 @@ public class MainActivity extends Activity {
         login_name = username.getText().toString();
         login_password = password.getText().toString();
 
-//        TODO UNCOMMENT THIS BEFORE FINALS
-//      if((login_name.matches("Keerthana") && login_password.matches("abcd"))|| (login_name.matches("Pratiksha")&& login_password.matches("1234")))
-        if(true)
+
+      if((login_name.matches("Keerthana") && login_password.matches("abcd"))|| (login_name.matches("Pratiksha")&& login_password.matches("1234")))
         {
             Intent intent1 = new Intent(getBaseContext(), PetListActivity.class);
             startActivity(intent1);
@@ -58,23 +57,5 @@ public class MainActivity extends Activity {
         }
 
     }
-
-//    public void startAddDetailsActivity(View view)
-//    {
-//        Intent intent = new Intent(MainActivity.this,AddDetailsActivity.class);
-//        startActivity(intent);
-//    }
-
-//    public void startMainListActivity(View view)
-//    {
-//
-//    }
-
-//    public void onClickResetDB(View view){
-//        mDBHelper.resetThis();
-//    }
-//    public void onClickSeedDatabase(View view){
-//        mDBHelper.seedDatabase();
-//    }
 }
 

@@ -6,6 +6,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+
+import java.util.List;
+import static com.cornez.buddy.Utils.seedPetListData;
+
+
 public class HelpActivity extends Activity {
     protected DBHelper mDBHelper;
 
@@ -30,7 +35,8 @@ public class HelpActivity extends Activity {
 
     }
     public void onClickSeedDatabase(View view){
-        mDBHelper.seedDatabase();
+        List<Pet> petList = seedPetListData(getBaseContext());
+        mDBHelper.seedDatabase(petList);
         Toast.makeText(getApplicationContext(), "Database seeded with random values", Toast.LENGTH_SHORT).show();
 
     }

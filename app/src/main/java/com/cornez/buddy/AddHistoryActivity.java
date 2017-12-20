@@ -12,13 +12,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Date;
-import java.util.List;
+
 
 
 public class AddHistoryActivity extends AppCompatActivity {
 
     protected DBHelper mDBHelper;
-    private List<Pet> list;
     private Pet currentPet;
     private History historyToEdit;
 
@@ -29,7 +28,6 @@ public class AddHistoryActivity extends AppCompatActivity {
     private EditText editHistAge;
     private EditText editHistDescription;
 
-    public int ACTIVITY_MODE_ADD = 1;
     public int ACTIVITY_MODE_EDIT = 2;
 
     private int currentActivityMode = 1;
@@ -101,8 +99,6 @@ public class AddHistoryActivity extends AppCompatActivity {
 
     public void btnSaveHistClick(View view){
 
-
-        //TODO VALIDATE THE EMPTY STRING OF EDIT TEXTS
         String petIdString = textPetId.getText().toString();
         String weightString = editHistWeight.getText().toString();
         String ageString = editHistAge.getText().toString();
@@ -148,12 +144,7 @@ public class AddHistoryActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }

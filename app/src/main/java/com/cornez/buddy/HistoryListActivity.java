@@ -48,8 +48,6 @@ public class HistoryListActivity extends AppCompatActivity {
 
     private FloatingActionButton addNewHistoryButton;
     private FloatingActionButton deleteHistoryButton;
-
-    private int ACTIVITY_MODE_ADD = 1;
     private int ACTIVITY_MODE_EDIT = 2;
 
     public void onBackPressed()
@@ -138,11 +136,6 @@ public class HistoryListActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-//            case R.id.action_search:
-//                Toast.makeText(getApplicationContext(), "Clicked Search", Toast.LENGTH_SHORT).show();
-////                CHOICE_MODE_ENABLED = !CHOICE_MODE_ENABLED;
-////                adapt.notifyDataSetChanged();
-//                return true;
 
             case R.id.action_delete:
                 Toast.makeText(getApplicationContext(), "Clicked DELETE", Toast.LENGTH_SHORT).show();
@@ -159,8 +152,6 @@ public class HistoryListActivity extends AppCompatActivity {
                 return true;
 
             default:
-                // If we got here, the user's action was not recognized.
-                // Invoke the superclass to handle it.
                 return super.onOptionsItemSelected(item);
 
         }
@@ -192,8 +183,6 @@ public class HistoryListActivity extends AppCompatActivity {
                         onHistListUpdated();
                     }})
                 .setNegativeButton(android.R.string.no, null).show();
-        Log.d("TEST", "TEST 2");
-
     }
 
     public void onHistListUpdated(){
@@ -213,12 +202,6 @@ public class HistoryListActivity extends AppCompatActivity {
         adapt = new HistoryArrayAdapter(this, R.layout.history_item, list);
         ListView historyListView = (ListView) findViewById(R.id.historyListView);
         historyListView.setAdapter(adapt);
-
-//        Bitmap petProfileCardImage = getBitmap(currentPet.getImagePath());
-//        if(petProfileCardImage != null)
-//            petCardImageView.setImageBitmap(petProfileCardImage);
-//        petCardNameTextView.setText(currentPet.getName());
-//        petCardOwnerTextView.setText(currentPet.getOwnerName());
     }
 
 

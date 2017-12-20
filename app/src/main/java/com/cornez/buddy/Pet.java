@@ -11,7 +11,6 @@ class Pet implements Serializable {
     private int id;
     private String name;
     private String breed;
-//    private int age;
     private String ownerName;
     private String imagePath;
     private String contact;
@@ -23,7 +22,6 @@ class Pet implements Serializable {
         this.id = id;
         this.name = name;
         this.breed = breed;
-//        this.age = age;
         this.ownerName = ownerName;
         this.imagePath = imagePath;
         this.contact = contact;
@@ -53,9 +51,6 @@ class Pet implements Serializable {
         this.breed = breed;
     }
 
-//    public int getAge() { return age; }
-//
-//    public void setAge(int age) { this.age = age;}
 
     public String getOwnerName() {
         return ownerName;

@@ -80,28 +80,18 @@ public class DBHelper extends SQLiteOpenHelper {
         Log.d("RESET_TAG", "Called reset DB");
     }
 
-    public void seedDatabase() {
+    public void seedDatabase(List<Pet> petList) {
         int seedCount = 10;
         SQLiteDatabase db = this.getWritableDatabase();
-        for(int i =0 ;i < seedCount; i++){
+        for(int i =0 ;i < petList.size(); i++){
             ContentValues values = new ContentValues();
-            values.put(KEY_PET_NAME, "PetName"+i);
-            values.put(KEY_PET_BREED, "PetBreed"+i);
-            values.put(KEY_PET_OWNER_NAME, "PetOwnerName"+i);
-            values.put(KEY_PET_CONTACT, "3238099061");
-            values.put(KEY_PET_IMAGE_PATH, "PetImagePath"+i);
-            long insertedId = db.insert(DATABASE_TABLE_PET, null, values);
-            int insertedIdInt = toIntExact(insertedId);
-
-            for(int j = 0; j < seedCount/2 ; j++){
-                ContentValues hist_values = new ContentValues();
-                hist_values.put(KEY_HIST_PET_ID, insertedIdInt);
-                hist_values.put(KEY_HIST_AGE, i+j+1);
-                hist_values.put(KEY_HIST_WEIGHT, (i+j+1) * 3);
-                hist_values.put(KEY_HIST_DESC, "Random String of what is wrong with this pet"+String.valueOf(i)+" "+String.valueOf(j));
-                db.insert(DATABASE_TABLE_HISTORY, null, hist_values);
-            }
-
+            Pet p = petList.get(i);
+            values.put(KEY_PET_NAME, p.getName());
+            values.put(KEY_PET_BREED, p.getBreed());
+            values.put(KEY_PET_OWNER_NAME, p.getOwnerName());
+            values.put(KEY_PET_CONTACT, p.getContact());
+            values.put(KEY_PET_IMAGE_PATH, p.getImagePath());
+            db.insert(DATABASE_TABLE_PET, null, values);
         }
         db.close();
     }
@@ -125,7 +115,6 @@ public class DBHelper extends SQLiteOpenHelper {
 
         //ADD KEY-VALUE PAIR INFORMATION FOR THE TASK DESCRIPTION
         // values.put(KEY_TASK_ID,task.get_id()); AUTOINCREMENT
-
         values.put(KEY_PET_NAME, pet.getName()); // pet name
         values.put(KEY_PET_BREED, pet.getBreed());
         values.put(KEY_PET_OWNER_NAME, pet.getOwnerName());
@@ -196,7 +185,6 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public List<Pet> getAllPets() {
 
-        //GET ALL THE TASK ITEMS ON THE LIST
         List<Pet> petList = new ArrayList<Pet>();
 
         //SELECT ALL QUERY FROM THE TABLE
@@ -205,7 +193,6 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
 
-        // LOOP THROUGH THE TODO TASKS
         if (cursor.moveToFirst()) {
             do {
                 Pet pet = new Pet();
@@ -220,15 +207,11 @@ public class DBHelper extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
         }
 
-        // RETURN THE LIST OF TASKS FROM THE TABLE
         return petList ;
     }
     public List<History> getAllPetHistory(int petId) {
 
-        //GET ALL THE TASK ITEMS ON THE LIST
         List<History> petHistoryList = new ArrayList<History>();
-
-        //SELECT ALL QUERY FROM THE TABLE
         String selectQuery;
         if(petId == 0)
             selectQuery = "SELECT * FROM " + DATABASE_TABLE_HISTORY;
@@ -238,7 +221,6 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
 
-        // LOOP THROUGH THE TODO TASKS
         if (cursor.moveToFirst()) {
             do {
                 History history = new History();
@@ -252,18 +234,9 @@ public class DBHelper extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
         }
 
-        // RETURN THE LIST OF TASKS FROM THE TABLE
         return petHistoryList;
     }
 
-//    public void clearAll(List<Pet_Details> list) {
-//        //GET ALL THE LIST TASK ITEMS AND CLEAR THEM
-//        list.clear();
-//
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        db.delete(DATABASE_TABLE, null, new String[]{});
-//        db.close();
-//    }
 
     public void deleteSelectedPets(List<Pet> list) {
         if(list.isEmpty())
