@@ -1,4 +1,4 @@
-package com.cornez.todotodayii;
+package com.cornez.buddy;
 
 
 import android.content.ContentValues;
@@ -6,18 +6,13 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.os.Debug;
 import android.util.Log;
 
-import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Locale;
 
-import static com.cornez.todotodayii.Utils.getDateFromSQLDateTime;
-import static com.cornez.todotodayii.Utils.getDateTime;
+import static com.cornez.buddy.Utils.getDateFromSQLDateTime;
 import static java.lang.Math.toIntExact;
 
 

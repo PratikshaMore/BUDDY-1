@@ -1,4 +1,4 @@
-package com.cornez.todotodayii;
+package com.cornez.buddy;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

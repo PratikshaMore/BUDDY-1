@@ -1,4 +1,4 @@
-package com.cornez.todotodayii;
+package com.cornez.buddy;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;

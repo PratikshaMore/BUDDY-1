@@ -1,12 +1,8 @@
-package com.cornez.todotodayii;
+package com.cornez.buddy;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.Debug;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v7.app.AlertDialog;
@@ -22,7 +18,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -32,13 +27,10 @@ import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
 
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.cornez.todotodayii.Utils.MakeRoundableImage;
-import static com.cornez.todotodayii.Utils.getBitmap;
+import static com.cornez.buddy.Utils.MakeRoundableImage;
 
 
 public class PetListActivity extends AppCompatActivity {

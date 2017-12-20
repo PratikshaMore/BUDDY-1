@@ -1,4 +1,4 @@
-package com.cornez.todotodayii;
+package com.cornez.buddy;
 
 import android.content.Context;
 import android.graphics.Bitmap;
