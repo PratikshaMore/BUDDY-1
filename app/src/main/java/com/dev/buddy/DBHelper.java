@@ -1,4 +1,4 @@
-package com.cornez.buddy;
+package com.dev.buddy;
 
 
 import android.content.ContentValues;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import static com.cornez.buddy.Utils.getDateFromSQLDateTime;
+import static com.dev.buddy.Utils.getDateFromSQLDateTime;
 import static java.lang.Math.toIntExact;
 
 

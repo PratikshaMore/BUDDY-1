@@ -1,4 +1,4 @@
-package com.cornez.buddy;
+package com.dev.buddy;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;

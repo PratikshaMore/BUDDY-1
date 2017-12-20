@@ -1,4 +1,4 @@
-package com.cornez.buddy;
+package com.dev.buddy;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -28,7 +28,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.cornez.buddy.Utils.MakeRoundableImage;
+import static com.dev.buddy.Utils.MakeRoundableImage;
 
 public class HistoryListActivity extends AppCompatActivity {
     protected DBHelper mDBHelper;

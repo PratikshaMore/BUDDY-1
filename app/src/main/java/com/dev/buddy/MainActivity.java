@@ -1,4 +1,4 @@
-package com.cornez.buddy;
+package com.dev.buddy;
 
 import android.app.Activity;
 import android.content.Intent;

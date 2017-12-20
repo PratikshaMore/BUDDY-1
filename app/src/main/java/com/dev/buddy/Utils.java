@@ -1,4 +1,4 @@
-package com.cornez.buddy;
+package com.dev.buddy;
 
 import android.content.Context;
 import android.graphics.Bitmap;

@@ -1,4 +1,4 @@
-package com.cornez.buddy;
+package com.dev.buddy;
 
 import android.Manifest;
 import android.app.Activity;
@@ -22,9 +22,9 @@ import android.widget.Toast;
 import java.util.List;
 import android.view.View.OnClickListener;
 
-import static com.cornez.buddy.Utils.MakeRoundableImage;
-import static com.cornez.buddy.Utils.getBitmap;
-import static com.cornez.buddy.Utils.saveImage;
+import static com.dev.buddy.Utils.MakeRoundableImage;
+import static com.dev.buddy.Utils.getBitmap;
+import static com.dev.buddy.Utils.saveImage;
 
 
 public class AddPetActivity extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package com.cornez.buddy;
+package com.dev.buddy;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,7 +9,7 @@ import android.view.Menu;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import static com.cornez.buddy.Utils.MakeRoundableImage;
+import static com.dev.buddy.Utils.MakeRoundableImage;
 
 
 public class HistoryListItemPage extends AppCompatActivity {
