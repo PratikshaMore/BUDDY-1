@@ -58,11 +58,8 @@
         android:id="@+id/lblPetDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/historyPagePetContact"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:layout_marginTop="13dp"
+        android:layout_alignStart="@+id/lblPetDate"
+        android:layout_below="@+id/lblPetDate"
         android:ellipsize="end"
         android:scrollHorizontally="true"
         android:text="Description:"
@@ -72,19 +69,17 @@
         android:id="@+id/lblPetDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/lblOwner"
+        android:layout_below="@+id/lblOwner"
         android:text="Date:"
-        android:layout_alignBaseline="@+id/lblPetDescription"
-        android:textSize="@dimen/listview_item_heading"
-        android:layout_toLeftOf="@id/historyPagePetDate"/>
+        android:textSize="@dimen/listview_item_heading" />
 
     <TextView
         android:id="@+id/historyPagePetDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/lblPetDescription"
-        android:layout_alignBottom="@+id/lblPetDescription"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_alignStart="@+id/historyPagePetDescription"
+        android:layout_below="@+id/historyPagePetOwner"
         android:ellipsize="end"
         android:scrollHorizontally="true"
         android:text="MM/DD/YYYY"
@@ -94,53 +89,49 @@
         android:id="@+id/historyPagePetDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/lblPetDescription"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_alignBaseline="@+id/lblPetDescription"
+        android:layout_alignBottom="@+id/lblPetDescription"
+        android:layout_alignStart="@+id/historyPagePetAge"
         android:ellipsize="end"
         android:scrollHorizontally="true"
         android:text="DESCRIPTION GOES HERE"
         android:textSize="@dimen/listview_item_heading" />
 
-        <TextView
-            android:id="@+id/lblTextAge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/historyPagePetDescription"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:text="Age:"
-            android:textSize="@dimen/listview_item_single_line" />
+    <TextView
+        android:id="@+id/lblTextAge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/lblPetDescription"
+        android:layout_below="@+id/lblPetDescription"
+        android:text="Age:"
+        android:textSize="@dimen/listview_item_single_line" />
 
-        <TextView
-            android:id="@+id/historyPagePetAge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/historyPagePetDescription"
-            android:layout_toEndOf="@+id/lblTextAge"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:text="12"
-            android:textSize="@dimen/listview_item_single_line" />
+    <TextView
+        android:id="@+id/historyPagePetAge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/historyPagePetDescription"
+        android:layout_toStartOf="@+id/historyPagePetName"
+        android:text="12"
+        android:textSize="@dimen/listview_item_single_line" />
 
-        <TextView
-            android:id="@+id/lblTextWeight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/activity_horizontal_margin"
-            android:layout_below="@id/historyPagePetAge"
-            android:text="Weight:"
-            android:textSize="@dimen/listview_item_single_line" />
+    <TextView
+        android:id="@+id/lblTextWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/lblTextAge"
+        android:layout_below="@+id/lblTextAge"
+        android:text="Weight:"
+        android:textSize="@dimen/listview_item_single_line" />
 
-        <TextView
-            android:id="@+id/historyPagePetWeight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/lblTextWeight"
-            android:layout_alignBottom="@+id/lblTextWeight"
-            android:layout_toEndOf="@+id/lblTextWeight"
-            android:text="123"
-            android:textSize="@dimen/listview_item_single_line" />
+    <TextView
+        android:id="@+id/historyPagePetWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/historyPagePetAge"
+        android:layout_below="@+id/historyPagePetAge"
+        android:text="123"
+        android:textSize="@dimen/listview_item_single_line" />
 
     <TextView
         android:id="@+id/lblOwner"
